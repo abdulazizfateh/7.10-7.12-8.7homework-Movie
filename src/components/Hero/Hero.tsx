@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { IMAGE_URL } from '@/const';
 // Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
