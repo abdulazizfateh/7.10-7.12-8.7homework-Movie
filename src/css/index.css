@@ -1,0 +1,142 @@
+@import "tailwindcss";
+@custom-variant light (&:where(.light, .light *));
+
+@font-face {
+    font-family: S;
+    src: url("../assets/fonts/Satoshi-Variable.woff2");
+}
+
+@theme {
+    /* Font */
+    --font-S: S;
+
+    /* Color */
+    /* Primary - Light & Dark Mode*/
+    --color-primary: #C61F1F;
+
+    /* Bg - Dark Mode*/
+    --color-bg-dark-900: #000000;
+    --color-bg-dark-800: #111111;
+    --color-bg-dark-700: #1D1D1D;
+
+    /* Text - Dark Mode*/
+    --color-text-dark-100: #FFFFFF;
+    --color-text-dark-500: #A1A1A1;
+    --color-text-dark-600: #747474;
+    --color-text-dark-700: #4D4D4D;
+
+
+     /* Bg - Light Mode*/
+     --color-bg-light-900: #FFFFFF;
+     --color-bg-light-800: #DDDDDD;
+     --color-bg-light-700: #EEEEEE;
+ 
+     /* Text - Light Mode*/
+     --color-text-light-100: #000000;
+     --color-text-light-600: #747474;
+     --color-text-light-700: #4a5565;
+     --color-text-light-800: #0F0F0F;
+}
+
+
+
+
+* {
+    font-family: var(--font-S);
+    font-weight: 500;
+}
+
+body {
+    background-color: var(--color-bg-dark-900);
+    color: var(--color-text-dark-100);
+}
+
+a,
+button {
+    cursor: pointer;
+}
+
+.container {
+    max-width: 1240px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 12px;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding: 0 24px;
+    }
+}
+
+@media (min-width:1024) {
+    .container {
+        padding: 0 30px;
+    }
+}
+
+
+.link_hover {
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: var(--color-primary);
+    transition: color 0.3s;
+}
+
+.link_hover:hover {
+    color: var(--color-primary);
+}
+
+.link_hover::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s;
+}
+
+.link_hover:hover::after {
+    transform: scaleX(1);
+}
+
+
+
+
+
+
+/* White to Red */
+.link_hover_footer {
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: var(--color-text-dark-500);
+    transition: color 0.3s;
+}
+
+.link_hover_footer:hover {
+    color: var(--color-primary);
+}
+
+.link_hover_footer::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .2s;
+}
+
+.link_hover_footer:hover::after {
+    transform: scaleX(1);
+}
