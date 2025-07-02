@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { IMAGE_URL } from '@/const';
 // Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Navigation, Thumbs, Autoplay, Pagination } from 'swiper/modules';
+import { FreeMode, Navigation, Thumbs, Autoplay } from 'swiper/modules';
 // Swiper CSS
 import './style.css';
 import 'swiper/swiper-bundle.css';
@@ -88,7 +88,7 @@ export const Hero = () => {
                             clickable: true,
                         }}
                         thumbs={{ swiper: thumbsSwiper }}
-                        modules={[FreeMode, Navigation, Thumbs, Autoplay, Pagination]}
+                        modules={[FreeMode, Navigation, Thumbs, Autoplay]}
                         className="mySwiper2 md:rounded-xl overflow-hidden"
                     >
                         {moviesData.map((movie) => (
