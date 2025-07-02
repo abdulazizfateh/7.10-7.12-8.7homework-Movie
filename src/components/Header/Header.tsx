@@ -2,16 +2,20 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink } from 'react-router-dom';
 // // Icons & Images
 import logo from "@/assets/images/logo-full.svg";
-import flagUs from "@/assets/images/flag-us.svg";
 import { GoHome } from "react-icons/go";
 import { IoCompassOutline } from "react-icons/io5";
-import { RiArrowDownSLine, RiBookmarkLine } from "react-icons/ri";
+import { RiBookmarkLine } from "react-icons/ri";
 import { RiSearchLine } from "react-icons/ri";
 
 import { GoHomeFill } from "react-icons/go";
 import { IoCompass } from "react-icons/io5";
-import { RiBookmarkFill } from "react-icons/ri";
+// import { RiBookmarkFill } from "react-icons/ri";
 import { RiSearchFill } from "react-icons/ri";
+
+import { GoSun } from "react-icons/go";
+import { PiMoonLight } from "react-icons/pi";
+import { FaRegUser } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa6";
 
 const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -31,12 +35,30 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
+
+  // Theme
+  const root = document.documentElement.classList;
+  const [theme, setTheme] = useState<boolean>(JSON.parse(localStorage.getItem("theme") || "false"));
+
+  useEffect(() => {
+    if (theme) {
+      root.add("light")
+    } else {
+      root.remove("light");
+    }
+    localStorage.setItem("theme", JSON.stringify(theme));
+  }, [theme])
+
+  const handleTheme = () => {
+    setTheme(prev => !prev);
+  }
+
   return (
     <>
       <header className={`fixed bottom-0 left-0 w-full md:hidden bg-bg-dark-800 light:bg-bg-light-900 z-20 transition-transform ${isVisible ? "translate-y-0" : "translate-y-full"}`}>
         <div className="container">
-          <nav className="flex items-center justify-between min-[440px]:justify-around h-[60px] sm:h-20 px-4">
-            <NavLink to={"/"}>
+          <nav className="flex items-center justify-between min-[440px]:justify-around h-14 sm:h-16 px-4">
+            <NavLink className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/"}>
               {
                 ({ isActive }) => (
                   isActive ? <GoHomeFill className="text-2xl" />
@@ -45,7 +67,7 @@ const Header = () => {
                 )
               }
             </NavLink>
-            <NavLink to={"/discover"}>
+            <NavLink className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/discover"}>
               {
                 ({ isActive }) => (
                   isActive ? <IoCompass className="text-2xl" />
@@ -54,21 +76,22 @@ const Header = () => {
                 )
               }
             </NavLink>
-            <NavLink to={"/saved"}>
-              {
-                ({ isActive }) => (
-                  isActive ? <RiBookmarkFill className="text-2xl" />
-                    :
-                    <RiBookmarkLine className='text-2xl' />
-                )
-              }
-            </NavLink>
-            <NavLink to={"/search"}>
+            <NavLink className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/search"}>
               {
                 ({ isActive }) => (
                   isActive ? <RiSearchFill className="text-2xl" />
                     :
                     <RiSearchLine className='text-2xl' />
+                )
+              }
+            </NavLink>
+            <NavLink className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/saved"}>
+              {
+                ({ isActive }) => (
+                  isActive ?
+                    <FaUser className="text-[22px]" />
+                    :
+                    <FaRegUser className="text-[22px]" />
                 )
               }
             </NavLink>
@@ -141,10 +164,10 @@ const Header = () => {
               </li>
             </ul>
             <div className='flex items-center gap-5'>
-              <button className='flex items-center gap-2 bg-[#1D1D1D80] light:bg-bg-light-700 h-12 px-3 rounded-xl'>
-                <img src={flagUs} alt="Flag Russia" width={20} />
-                <span className='text-text-dark-100 light:text-text-light-100 hidden lg:block'>En</span>
-                <RiArrowDownSLine className='text-xl text-text-dark-100 light:text-text-light-100' />
+              <button onClick={handleTheme} className='flex items-center gap-2 bg-[#1D1D1D80] hover:bg-bg-dark-900 duration-150 ease-out light:hover:bg-bg-light-800 light:bg-bg-light-700 h-12 px-3 rounded-xl'>
+                {
+                  theme ? <PiMoonLight className="text-xl" /> : <GoSun className="text-xl" />
+                }
               </button>
               <button className='bg-primary rounded-xl h-10 px-9 lg:h-12 lg:px-10 xl:h-14 xl:px-14 tracking-wide'>
                 <span className="text-text-dark-100">Sign in</span>

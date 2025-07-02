@@ -20,7 +20,7 @@ const Home = () => {
     return (
         <>
             <Hero />
-            <section className='section_trending_movies mt-[42px]'>
+            <section className='section_trending_movies mt-7 sm:mt-8 md:mt-9 lg:mt-[42px]'>
                 <div className="container">
                     <div className='trending_movies_wrapper'>
                         <div className='trending_movies_title_wrapper flex items-center justify-between w-full mb-4'>
