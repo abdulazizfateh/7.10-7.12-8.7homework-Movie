@@ -14,8 +14,8 @@ import iconSport from "@/assets/images/icon-sport.svg";
 import iconIG from "@/assets/images/icon-ig.svg";
 import iconFacebook from "@/assets/images/icon-facebook.svg";
 import iconYouTube from "@/assets/images/icon-youtube.svg";
-import { TbBrandGooglePlay } from "react-icons/tb";
-import { RiAppStoreLine } from "react-icons/ri";
+// import { TbBrandGooglePlay } from "react-icons/tb";
+// import { RiAppStoreLine } from "react-icons/ri";
 
 const Footer = () => {
   return (
