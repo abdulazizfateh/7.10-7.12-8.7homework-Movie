@@ -89,9 +89,9 @@ const Header = () => {
               {
                 ({ isActive }) => (
                   isActive ?
-                    <FaUser className="text-2xl" />
+                    <FaUser className='text-xl' />
                     :
-                    <FaRegUser className="text-2xl" />
+                    <FaRegUser className='text-xl' />
                 )
               }
             </NavLink>
