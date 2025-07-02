@@ -21,10 +21,10 @@ const Footer = () => {
   return (
     <footer className='site_footer mt-14 sm:mt-16 mb-20 md:mb-5 md:mt-20 lg:mt-[120px]'>
       <div className='container'>
-        <div className='footer_wrapper rounded-xl bg-bg-dark-800 light:bg-bg-light-700 px-4 py-[30px] sm:p-[30px] grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1.2fr] text-sm sm:text-base leading-5 tracking-wide'>
+        <div className='footer_wrapper rounded-xl bg-bg-dark-800 light:bg-bg-light-700 px-4 py-[30px] sm:p-[30px] grid gap-10 grid-cols-2 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1.2fr] text-sm sm:text-base leading-5 tracking-wide'>
           <div className='flex flex-col items-start justify-between'>
             <img src={logo} alt="Site Logo" />
-            <div className='flex-col gap-2 hidden sm:flex'>
+            <div className='flex-col gap-2 flex'>
               <img className='cursor-pointer w-32 md:w-[150px]' src={iconGooglePlay} alt="Icon Google Play" />
               <img className='cursor-pointer w-32 md:w-[150px]' src={iconAppStore} alt="Icon App Store" />
             </div>
@@ -78,8 +78,7 @@ const Footer = () => {
                 <img className='hover:scale-105 duration-150 ease-out cursor-pointer w-5 sm:w-6' src={iconIG} alt="Icon Instagram" />
                 <img className='hover:scale-105 duration-150 ease-out cursor-pointer w-5 sm:w-6' src={iconFacebook} alt="Icon Facebook" />
                 <img className='hover:scale-105 duration-150 ease-out cursor-pointer w-5 sm:w-6' src={iconYouTube} alt="Icon You Tuba" />
-                <TbBrandGooglePlay className='text-xl sm:hidden text-primary' />
-                <RiAppStoreLine className='text-xl sm:hidden text-primary' />
+           
               </div>
             </div>
           </div>

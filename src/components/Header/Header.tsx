@@ -4,38 +4,18 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from "@/assets/images/logo-full.svg";
 import { GoHome } from "react-icons/go";
 import { IoCompassOutline } from "react-icons/io5";
-import { RiBookmarkLine } from "react-icons/ri";
+import { RxBookmark } from "react-icons/rx";
 import { RiSearchLine } from "react-icons/ri";
 
 import { GoHomeFill } from "react-icons/go";
 import { IoCompass } from "react-icons/io5";
-// import { RiBookmarkFill } from "react-icons/ri";
+import { RxBookmarkFilled } from "react-icons/rx";
 import { RiSearchFill } from "react-icons/ri";
-
+import { GrMenu } from "react-icons/gr";
 import { GoSun } from "react-icons/go";
 import { PiMoonLight } from "react-icons/pi";
-import { FaRegUser } from "react-icons/fa6";
-import { FaUser } from "react-icons/fa6";
 
 const Header = () => {
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > 0 && currentScrollY > lastScrollY) {
-        setIsVisible(false);
-      } else if (currentScrollY < lastScrollY) {
-        setIsVisible(true);
-      }
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
-
   // Theme
   const root = document.documentElement.classList;
   const [theme, setTheme] = useState<boolean>(JSON.parse(localStorage.getItem("theme") || "false"));
@@ -55,63 +35,22 @@ const Header = () => {
 
   return (
     <>
-      <header className={`fixed bottom-0 left-0 w-full md:hidden bg-bg-dark-800 light:bg-bg-light-900 z-20 transition-transform ${isVisible ? "translate-y-0" : "translate-y-full"}`}>
+      <header className='site_header bg-bg-dark-900 light:bg-bg-light-900'>
         <div className="container">
-          <nav className="flex items-center justify-between min-[440px]:justify-around h-14 sm:h-16 px-4">
-            <NavLink className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/"}>
-              {
-                ({ isActive }) => (
-                  isActive ? <GoHomeFill className="text-2xl" />
-                    :
-                    <GoHome className='text-2xl' />
-                )
-              }
-            </NavLink>
-            <NavLink className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/discover"}>
-              {
-                ({ isActive }) => (
-                  isActive ? <IoCompass className="text-2xl" />
-                    :
-                    <IoCompassOutline className='text-2xl' />
-                )
-              }
-            </NavLink>
-            <NavLink className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/search"}>
-              {
-                ({ isActive }) => (
-                  isActive ? <RiSearchFill className="text-2xl" />
-                    :
-                    <RiSearchLine className='text-2xl' />
-                )
-              }
-            </NavLink>
-            <NavLink className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/saved"}>
-              {
-                ({ isActive }) => (
-                  isActive ?
-                    <FaUser className='text-xl' />
-                    :
-                    <FaRegUser className='text-xl' />
-                )
-              }
-            </NavLink>
-          </nav>
-        </div>
-      </header>
-      <header className='site_header hidden md:block bg-bg-dark-800 light:bg-bg-light-900'>
-        <div className="container">
-          <nav className='flex items-center justify-between h-20 relative'>
+          <nav className='flex items-center justify-between h-[68px] md:h-20 relative'>
             <div>
               <Link to={"/"} className='cursor-pointer'>
-                <img src={logo} alt="Site Logo" />
+                <img className="w-24 md:w-[103px]" src={logo} alt="Site Logo" />
               </Link>
             </div>
-            <ul className='flex items-center gap-6 absolute top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2'>
+            <ul className='hidden md:flex items-center gap-6 absolute top-1/2 -translate-y-1/2 right-1/2 translate-x-1/2'>
               <li>
                 <NavLink
                   to="/" className="h-12 px-1 flex flex-col items-center justify-between" children={({ isActive }) => (
                     <>
-                      <GoHome className={`text-2xl ${isActive ? "text-primary" : "text-text-dark-100 light:text-text-light-100"}`} />
+                      {
+                        isActive ? <GoHomeFill className='text-2xl text-primary' /> : <GoHome className='text-2xl text-text-dark-100 light:text-text-light-100' />
+                      }
                       <span className={`text-xs !font-semibold tracking-wide ${isActive ? "text-primary" : "text-text-dark-500 light:text-text-light-100"}`}>Home</span>
                     </>
                   )}
@@ -125,7 +64,9 @@ const Header = () => {
                   {
                     ({ isActive }) => (
                       <>
-                        <IoCompassOutline className={`text-2xl ${isActive ? "text-primary" : "text-text-dark-100 light:text-text-light-100"}`} />
+                        {
+                          isActive ? <IoCompass className='text-2xl text-primary' /> : <IoCompassOutline className='text-2xl text-text-dark-100 light:text-text-light-100' />
+                        }
                         <span className={`text-xs !font-semibold tracking-wide ${isActive ? "text-primary" : "text-text-dark-500 light:text-text-light-100"}`}>Discover</span>
                       </>
                     )
@@ -140,7 +81,7 @@ const Header = () => {
                   {
                     ({ isActive }) => (
                       <>
-                        <RiBookmarkLine className={`text-[23px] ${isActive ? "text-primary" : "text-text-dark-100 light:text-text-light-100"}`} />
+                        {isActive ? <RxBookmarkFilled className='text-2xl text-primary' /> : <RxBookmark className='text-[23px] text-text-dark-100 light:text-text-light-100' />}
                         <span className={`text-xs !font-semibold tracking-wide ${isActive ? "text-primary" : "text-text-dark-500 light:text-text-light-100"}`}>Saved</span>
                       </>
                     )
@@ -155,7 +96,9 @@ const Header = () => {
                   {
                     ({ isActive }) => (
                       <>
-                        <RiSearchLine className={`text-2xl ${isActive ? "text-primary" : "text-text-dark-100 light:text-text-light-100"}`} />
+                        {
+                          isActive ? <RiSearchFill className='text-[23px] text-primary' /> : <RiSearchLine className='text-[23px] text-text-dark-100 light:text-text-light-100' />
+                        }
                         <span className={`text-xs tracking-wide ${isActive ? "text-primary" : "text-text-dark-500 light:text-text-light-100"}`}>Search</span>
                       </>
                     )
@@ -163,13 +106,16 @@ const Header = () => {
                 </NavLink>
               </li>
             </ul>
-            <div className='flex items-center gap-5'>
-              <button onClick={handleTheme} className='flex items-center gap-2 bg-[#1D1D1D80] hover:bg-bg-dark-900 duration-150 ease-out light:hover:bg-bg-light-800 light:bg-bg-light-700 h-12 px-3 rounded-xl'>
+            <div className='flex items-center gap-2 md:gap-5'>
+              <button onClick={handleTheme} className='hidden md:flex h-9 px-2 md:h-12 md:px-3 items-center gap-2 bg-bg-dark-800 hover:bg-bg-dark-700 light:bg-bg-light-700 light:hover:bg-bg-light-800 duration-150 ease-out rounded-xl'>
                 {
-                  theme ? <PiMoonLight className="text-xl" /> : <GoSun className="text-xl" />
+                  theme ? <PiMoonLight className="text-xl text-text-dark-100 light:text-text-light-100" /> : <GoSun className="text-xl" />
                 }
               </button>
-              <button className='bg-primary rounded-xl h-10 px-9 lg:h-12 lg:px-10 xl:h-14 xl:px-14 tracking-wide'>
+              <button className='md:hidden'>
+                <GrMenu className="text-2xl text-primary" />
+              </button>
+              <button className='hidden md:block bg-primary rounded-xl h-12 px-10 xl:h-14 xl:px-14 tracking-wide'>
                 <span className="text-text-dark-100">Sign in</span>
               </button>
             </div>
