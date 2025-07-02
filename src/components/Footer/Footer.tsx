@@ -19,7 +19,7 @@ import { RiAppStoreLine } from "react-icons/ri";
 
 const Footer = () => {
   return (
-    <footer className='site_footer mt-14 sm:mt-16 mb-5 md:mt-20 lg:mt-[120px]'>
+    <footer className='site_footer mt-14 sm:mt-16 mb-20 md:mb-5 md:mt-20 lg:mt-[120px]'>
       <div className='container'>
         <div className='footer_wrapper rounded-xl bg-bg-dark-800 light:bg-bg-light-700 px-4 py-[30px] sm:p-[30px] grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1.2fr] text-sm sm:text-base leading-5 tracking-wide'>
           <div className='flex flex-col items-start justify-between'>
