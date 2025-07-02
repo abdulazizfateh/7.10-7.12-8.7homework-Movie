@@ -19,7 +19,7 @@ const Home = () => {
     const moviesData = data?.data?.results?.slice(0, 12);
     return (
         <>
-            <Hero />
+            {/* <Hero /> */}
             <section className='section_trending_movies mt-[42px]'>
                 <div className="container">
                     <div className='trending_movies_wrapper'>
