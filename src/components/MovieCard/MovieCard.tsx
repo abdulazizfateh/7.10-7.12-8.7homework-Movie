@@ -1,6 +1,7 @@
 import React, { type FC } from 'react'
 // Types
 import type { IGenre, IMovie } from '@/types/types';
+import { useNavigate } from 'react-router-dom';
 // IMG URL
 import { IMAGE_URL } from '@/const';
 // React Query
@@ -12,7 +13,7 @@ import { FaImdb } from "react-icons/fa";
 const LoadingMovieCard = ({ cardQuantity }: { cardQuantity: number }) => {
     const loadingCardData: string[] = Array(cardQuantity).fill("");
     return (
-        <div className='movie_cards grid grid-cols-2 min-[640px]:grid-cols-3 min-[880px]:grid-cols-4 gap-x-2 gap-y-4 sm:gap-x-4 sm:gap-y-5'>
+        <div className='loading_movie_cards grid grid-cols-2 min-[640px]:grid-cols-3 min-[880px]:grid-cols-4 gap-x-2 gap-y-7 sm:gap-x-4'>
             {
                 loadingCardData.map((_, index) => (
                     <div key={index} className='flex flex-col gap-1.5 sm:gap-2'>
@@ -31,9 +32,9 @@ const LoadingMovieCard = ({ cardQuantity }: { cardQuantity: number }) => {
 interface Props {
     data: undefined | IMovie[];
     isLoading: boolean;
+    cardQuantity: number
 }
-
-const MovieCard: FC<Props> = ({ data: movieData, isLoading }) => {
+const MovieCard: FC<Props> = ({ data: movieData, isLoading, cardQuantity }) => {
     const { getGenre } = useGenre();
     const { data } = getGenre;
     const genresList: IGenre[] = data?.genres;
@@ -44,26 +45,28 @@ const MovieCard: FC<Props> = ({ data: movieData, isLoading }) => {
             .map(id => genresList.find(genre => genre.id === id)?.name)
     };
 
+    const nav = useNavigate();
+
     return (
         <>
             {
-                isLoading && <LoadingMovieCard cardQuantity={12} />
+                isLoading && <LoadingMovieCard cardQuantity={cardQuantity} />
             }
             <div className='movie_cards grid grid-cols-2 min-[640px]:grid-cols-3 min-[880px]:grid-cols-4 gap-x-2 gap-y-7 sm:gap-x-4'>
                 {
                     movieData?.map((movie) => (
                         <div key={movie.id} className='movie_card flex flex-col gap-1.5 sm:gap-2'>
                             <div className='movie_card_image rounded-xl overflow-hidden relative group'>
-                                <img className='h-64 min-[440px]:h-80 min-[520px]:h-[350px] lg:h-[400px] w-full object-cover group-hover:scale-[1.015] duration-150 ease-out' src={IMAGE_URL + movie.poster_path} alt={movie.title} />
+                                <img onClick={() => nav(`/discover/${movie.id}`)} className='h-64 min-[440px]:h-80 min-[520px]:h-[350px] lg:h-[400px] w-full object-cover group-hover:scale-[1.01] duration-200 ease-out cursor-pointer' src={IMAGE_URL + movie.poster_path} alt={movie.title} />
                                 <button className='absolute top-2.5 right-2.5 md:top-4 md:right-3 bg-bg-dark-900/20 p-1.5 rounded-sm backdrop-blur-xs cursor-pointer'>
-                                    <RiBookmarkLine className='text-[#eee] text-base sm:text-lg md:text-xl' />
+                                    <RiBookmarkLine className='text-bg-light-700 text-base sm:text-lg md:text-xl' />
                                 </button>
-                                <div className='bg-primary rounded-sm w-12 h-7 flex items-center justify-center absolute top-2.5 left-2.5 md:top-4 md:left-3'>
-                                    <span className='text-text-dark-100 text-sm leading-3'>{movie.release_date.slice(0, 4)}</span>
+                                <div className='bg-primary rounded-sm w-12 h-7 flex items-center justify-center absolute top-2.5 left-2.5 md:top-3 md:left-3'>
+                                    <span className='text-text-dark-100 text-xs !font-semibold leading-3'>{movie.release_date.slice(0, 4)}</span>
                                 </div>
-                                <button className='absolute top-10 left-2.5 md:top-12 md:right-3 items-center gap-.5 hidden lg:flex'>
+                                <button className='absolute top-10 left-2.5 md:top-11 md:right-3 items-center gap-.5 hidden lg:flex'>
                                     <FaImdb className='text-[#f3b701] text-[32px]' />
-                                    <span className='bg-[#f3b701] h-7 px-1.5 rounded-sm flex items-center justify-center text-xs !font-semibold text-text-light-100'>{movie.vote_average}</span>
+                                    <span className='bg-[#f3b701] h-7 px-1.5 rounded-sm flex items-center justify-center text-xs !font-semibold text-text-light-100'>{movie.vote_average.toFixed(1)}</span>
                                 </button>
                             </div>
                             <div className='movie_card_body flex-1 flex flex-col gap-1.5'>
@@ -77,7 +80,7 @@ const MovieCard: FC<Props> = ({ data: movieData, isLoading }) => {
                                         ))}
                                     </p>
                                     <div className='flex items-center gap-1 text-xs !font-semibold lg:hidden light:text-text-light-100 text-text-dark-100'>
-                                        <span className='text-[#f3b701]'>IMDb:</span>
+                                        <span className='text-[#f3b701] !font-black'>IMDb:</span>
                                         <span className=''>{movie.vote_average.toFixed(1)}</span>
                                     </div>
                                 </div>

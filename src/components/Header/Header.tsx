@@ -106,16 +106,16 @@ const Header = () => {
                 </NavLink>
               </li>
             </ul>
-            <div className='flex items-center gap-2 md:gap-5'>
-              <button onClick={handleTheme} className='hidden md:flex h-9 px-2 md:h-12 md:px-3 items-center gap-2 bg-bg-dark-800 hover:bg-bg-dark-700 light:bg-bg-light-700 light:hover:bg-bg-light-800 duration-150 ease-out rounded-xl'>
+            <div className='flex items-center gap-2 md:gap-3'>
+              <button onClick={handleTheme} className='hidden md:flex size-11 xl:size-12 items-center justify-center gap-2 bg-bg-dark-800 hover:bg-bg-dark-700 light:bg-bg-light-700 light:hover:bg-bg-light-800 duration-150 ease-out rounded-full'>
                 {
-                  theme ? <PiMoonLight className="text-xl text-text-dark-100 light:text-text-light-100" /> : <GoSun className="text-xl" />
+                  theme ? <PiMoonLight className="text-2xl text-text-dark-100 light:text-text-light-100" /> : <GoSun className="text-2xl" />
                 }
               </button>
               <button className='md:hidden'>
-                <GrMenu className="text-2xl text-primary" />
+                <GrMenu className="text-2xl" />
               </button>
-              <button className='hidden md:block bg-primary rounded-xl h-12 px-10 xl:h-14 xl:px-14 tracking-wide'>
+              <button className='hidden md:block bg-primary rounded-xl h-11 px-10 xl:h-12 xl:px-12 tracking-wide'>
                 <span className="text-text-dark-100">Sign in</span>
               </button>
             </div>

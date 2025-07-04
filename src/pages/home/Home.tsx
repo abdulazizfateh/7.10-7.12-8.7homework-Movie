@@ -32,7 +32,7 @@ const Home = () => {
                             </Link>
                         </div>
                         <div className='trending_movies_cards_wrapper'>
-                            <MovieCard data={moviesData} isLoading={isLoading} />
+                            <MovieCard data={moviesData} isLoading={isLoading} cardQuantity={12}/>
                         </div>
                     </div>
                 </div>

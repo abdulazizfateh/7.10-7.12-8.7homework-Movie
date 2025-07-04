@@ -77,6 +77,9 @@ button {
 }
 
 
+
+
+/* // Red to REd */
 .link_hover {
     display: flex;
     align-items: center;
@@ -116,7 +119,6 @@ button {
     display: flex;
     align-items: center;
     position: relative;
-    color: var(--color-text-dark-500);
     transition: color 0.3s;
 }
 
@@ -140,3 +142,50 @@ button {
 .link_hover_footer:hover::after {
     transform: scaleX(1);
 }
+
+
+
+
+
+
+
+/* White to White */
+.link_hover_hero {
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.link_hover_hero:hover {
+    color: var(--color-text-dark-100);
+}
+
+.link_hover_hero::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-text-dark-100);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .2s;
+}
+
+.link_hover_hero:hover::after {
+    transform: scaleX(1);
+}
+
+
+
+::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Optional: Still allow scrolling */
+  html, body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }

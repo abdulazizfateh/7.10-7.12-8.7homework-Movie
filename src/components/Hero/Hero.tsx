@@ -14,6 +14,7 @@ import type { IGenre, IMovie } from '@/types/types';
 import { RiPlayFill } from "react-icons/ri";
 // Swiper Type
 import type { Swiper as SwiperType } from 'swiper';
+import { useNavigate } from 'react-router-dom';
 
 export const Hero = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
@@ -32,15 +33,16 @@ export const Hero = () => {
     const getGenreNames = (ids: number[]) => {
         return ids.map(id => genresList.find(genre => genre.id === id)?.name).filter(Boolean);
     };
+    const nav = useNavigate();
 
     return (
         <section className='section_hero max-w-[1424px] mx-auto w-full flex flex-col gap-2 px-3 md:px-8'>
             {isLoading && (
                 <>
-                    <div className='max-w-[1360px] h-[570px] sm:h-[640px] rounded-xl bg-bg-dark-700 light:bg-bg-light-700'></div>
+                    <div className='max-w-[1360px] h-[350px] sm:h-[520px] md:h-[580px] lg:h-[640px] rounded-xl bg-bg-dark-700 light:bg-bg-light-700'></div>
                     <div className='flex items-center justify-center gap-1'>
                         {Array.from({ length: 4 }).map((_, i) => (
-                            <div key={i} className='w-[109.5px] h-16 rounded-xl bg-bg-dark-700 light:bg-bg-light-700'></div>
+                            <div key={i} className='flex-1 md:flex-none md:w-[109.5px] h-[50px] sm:h-16 rounded-xl bg-bg-dark-700 light:bg-bg-light-700'></div>
                         ))}
                     </div>
                 </>
@@ -66,10 +68,12 @@ export const Hero = () => {
                             <SwiperSlide key={movie.id}>
                                 <img className='w-full h-full object-contain' src={IMAGE_URL + movie.backdrop_path} loading='lazy' alt={movie.title} />
                                 <div className='absolute right-1/2 bottom-6 translate-x-1/2 flex flex-col gap-4 w-full'>
-                                    <h1 className='text-[22px] md:text-[28px] lg:text-[32px] w-[92%] sm:w-[80%] mx-auto md:w-full text-text-dark-100 tracking-wide text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]'>
-                                        {movie.title}
-                                    </h1>
-                                    <div className='flex items-center justify-center gap-2 text-sm tracking-wide text-text-dark-100'>
+                                    <div className='flex items-center justify-center mx-auto w-[92%] sm:w-[80%] md:w-full'>
+                                        <h1 onClick={() => nav(`/discover/${movie.id}`)} className='link_hover_hero text-xl sm:text-[22px] md:text-[28px] lg:text-[32px] mx-auto text-text-dark-100 tracking-wide text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)] cursor-pointer'>
+                                            {movie.title}
+                                        </h1>
+                                    </div>
+                                    <div className='hidden sm:flex items-center justify-center gap-2 text-sm tracking-wide text-text-dark-100'>
                                         <p className='text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]'>{movie.release_date.slice(0, 4)}</p>
                                         <span className='text-xs leading-4'>•</span>
                                         <p className="line-clamp-1 flex items-center gap-1 flex-wrap">
@@ -83,7 +87,7 @@ export const Hero = () => {
                                         <p className='text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]'>{movie.adult ? "18+" : "6+"}</p>
                                     </div>
                                     <div className='flex items-center justify-center'>
-                                        <button className='w-[82%] min-[450px]:w-[380px] md:w-[380px] h-12 sm:h-[52px] flex items-center justify-center gap-[7px] bg-text-dark-100 rounded-xl text-primary'>
+                                        <button onClick={() => nav(`/discover/${movie.id}`)} className='w-[82%] min-[450px]:w-[380px] md:w-[380px] h-12 sm:h-[52px] flex items-center justify-center gap-[7px] bg-text-dark-100 rounded-xl text-primary'>
                                             <RiPlayFill className='text-2xl' />
                                             <span className='tracking-wide'>Watch</span>
                                         </button>

@@ -17,7 +17,7 @@ const NavMobile = () => {
             <div className='fixed bottom-0 left-0 w-full md:hidden bg-bg-dark-800 light:bg-bg-light-900 z-20'>
                 <div className="container">
                     <div className="flex items-center justify-between min-[440px]:justify-around h-16 sm:h-[70px] px-4">
-                        <NavLink className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/"}>
+                        <NavLink onClick={()=> window.scrollTo(0, 0)} className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/"}>
                             {
                                 ({ isActive }) => (
                                     isActive ? <GoHomeFill className="text-2xl" />
@@ -26,7 +26,7 @@ const NavMobile = () => {
                                 )
                             }
                         </NavLink>
-                        <NavLink className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/discover"}>
+                        <NavLink onClick={()=> window.scrollTo(0, 0)} className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/discover"}>
                             {
                                 ({ isActive }) => (
                                     isActive ? <IoCompass className="text-2xl" />
@@ -35,7 +35,7 @@ const NavMobile = () => {
                                 )
                             }
                         </NavLink>
-                        <NavLink className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/search"}>
+                        <NavLink onClick={()=> window.scrollTo(0, 0)} className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/search"}>
                             {
                                 ({ isActive }) => (
                                     isActive ? <RiSearchFill className="text-2xl" />
@@ -44,7 +44,7 @@ const NavMobile = () => {
                                 )
                             }
                         </NavLink>
-                        <NavLink className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/saved"}>
+                        <NavLink onClick={()=> window.scrollTo(0, 0)} className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/saved"}>
                             {
                                 ({ isActive }) => (
                                     isActive ?

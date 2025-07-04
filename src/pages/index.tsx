@@ -4,6 +4,10 @@ import { useRoutes } from 'react-router-dom';
 const Layout = lazy(() => import("./layout/Layout"));
 const Home = lazy(() => import("./home/Home"));
 const Discover = lazy(() => import("./discover/Discover"));
+const DiscoverDetail = lazy(() => import("./discover/DiscoverDetail"));
+const MovieDetail = lazy(() => import("@/components/MovieDetail/MovieDetail"));
+const CastMovieDetail = lazy(() => import("@/components/CastCrewMovieDetail/CastCrewMovieDetail"));
+const Cast = lazy(() => import("./cast/Cast"));
 
 const AppRoutes = () => {
     return (
@@ -21,7 +25,20 @@ const AppRoutes = () => {
                             path: "/saved", element: "Saved"
                         },
                         {
-                            path: "/search", element:"Search"
+                            path: "/search", element: "Search"
+                        },
+                        {
+                            path: "/discover/:id", element: <DiscoverDetail />, children: [
+                                {
+                                    path: "", element: <MovieDetail />
+                                },
+                                {
+                                    path: "cast", element: <CastMovieDetail />
+                                }
+                            ]
+                        },
+                        {
+                            path: "/cast/:id", element: <Cast />
                         }
                     ]
                 }

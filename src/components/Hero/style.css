@@ -44,12 +44,12 @@
 
 .mySwiper2 {
   width: 100%;
-  height: 500px;
+  height: 350px;
 }
 
 .mySwiper {
   width: 95%;
-  height: 64px;
+  height: 50px;
   box-sizing: border-box;
   padding: 10px 0;
 }
@@ -66,15 +66,29 @@
 
 @media (min-width:640px) {
   .mySwiper2 {
-    height: 640px;
+    height: 520px;
+  }
+
+  .mySwiper {
+    height: 64px;
   }
 }
 
 @media (min-width: 768px) {
+  .mySwiper2 {
+    height: 580px;
+  }
+
   .mySwiper {
     width: 450px;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mySwiper2 {
+    height: 640px;
   }
 }
