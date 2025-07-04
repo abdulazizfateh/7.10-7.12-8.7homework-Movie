@@ -1,4 +1,4 @@
-import React, { useEffect, type FC } from 'react'
+import React from 'react'
 // React Query
 import { useGenre } from '@/api/hooks/useGenre';
 // Types
