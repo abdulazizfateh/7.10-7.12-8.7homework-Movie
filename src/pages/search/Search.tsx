@@ -1,6 +1,5 @@
 import MovieCard from '@/components/MovieCard/MovieCard';
 import { useMovies } from '@/api/hooks/useMovies';
-import type { IMovie } from '@/types/types';
 import React, { useEffect, useState } from 'react'
 // Icons
 import { RiSearchLine } from "react-icons/ri";
