@@ -13,7 +13,6 @@ import type { IGenre, IMovie } from '@/types/types';
 // Icons
 import { RiPlayFill } from "react-icons/ri";
 import fallbackImage from "@/assets/images/fallback-image.webp"
-import logo from "@/assets/images/logo-full.svg";
 
 // Swiper Type
 import type { Swiper as SwiperType } from 'swiper';
