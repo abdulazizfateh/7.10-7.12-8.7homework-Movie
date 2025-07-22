@@ -6,8 +6,6 @@ import MovieCard from '@/components/MovieCard/MovieCard';
 import GenreList from '@/components/genreList/GenreList';
 // Antd
 import { Pagination } from 'antd';
-// CSS
-import "./style.css";
 // Params Genre
 import { useParamsHook } from '@/hooks/useParamsHook';
 

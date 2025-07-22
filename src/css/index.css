@@ -26,16 +26,16 @@
     --color-text-dark-700: #4D4D4D;
 
 
-     /* Bg - Light Mode*/
-     --color-bg-light-900: #FFFFFF;
-     --color-bg-light-800: #DDDDDD;
-     --color-bg-light-700: #EEEEEE;
- 
-     /* Text - Light Mode*/
-     --color-text-light-100: #000000;
-     --color-text-light-600: #747474;
-     --color-text-light-700: #4a5565;
-     --color-text-light-800: #0F0F0F;
+    /* Bg - Light Mode*/
+    --color-bg-light-900: #FFFFFF;
+    --color-bg-light-800: #DDDDDD;
+    --color-bg-light-700: #EEEEEE;
+
+    /* Text - Light Mode*/
+    --color-text-light-100: #000000;
+    --color-text-light-600: #747474;
+    --color-text-light-700: #4a5565;
+    --color-text-light-800: #0F0F0F;
 }
 
 
@@ -57,7 +57,7 @@ button {
 }
 
 .container {
-    max-width: 1240px;
+    max-width: 1440px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -182,10 +182,229 @@ button {
 
 ::-webkit-scrollbar {
     display: none;
-  }
-  
-  /* Optional: Still allow scrolling */
-  html, body {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;     /* Firefox */
-  }
+}
+
+/* Optional: Still allow scrolling */
+html,
+body {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+
+
+
+
+
+
+/* Pagination */
+.ant-pagination-item-ellipsis,
+.ant-pagination-item-link-icon {
+    color: var(--color-primary) !important;
+}
+
+.ant-pagination-item {
+    margin-inline: 0 !important;
+}
+
+@media (min-width: 640px) {
+    .ant-pagination-item {
+        margin-inline: 4px !important;
+    }
+}
+
+/* Light Mode Pagination */
+.light .custom-pagination .ant-pagination-item {
+    border-radius: 8px !important;
+    background-color: var(--color-bg-light-700);
+    border: none !important;
+    margin-inline: 8px;
+    padding: 16px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-P4);
+    font-size: 14px;
+}
+
+.light .custom-pagination .ant-pagination-item-active {
+    background-color: var(--color-primary) !important;
+    color: var(--color-text-dark-100) !important;
+    cursor: pointer;
+}
+
+.light .custom-pagination .ant-pagination-item-active {
+    color: var(--color-text-light-100) !important;
+}
+
+.light .custom-pagination .ant-pagination-item a {
+    color: black;
+}
+
+.light .custom-pagination .ant-pagination-next,
+.light .custom-pagination .ant-pagination-prev {
+    border-radius: 8px !important;
+    background-color: var(--color-bg-light-700);
+    border: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-light-100) !important;
+    width: 32px !important;
+    height: 32px !important;
+}
+
+
+
+@media (min-width: 640px) {
+    .light .custom-pagination .ant-pagination-item {
+        font-size: 16px;
+        padding: 18px 16px;
+    }
+
+    .light .custom-pagination .ant-pagination-next,
+    .light .custom-pagination .ant-pagination-prev {
+        width: 46px !important;
+        height: 36px !important;
+    }
+}
+
+.light .ant-pagination-prev .ant-pagination-item-link,
+.light .ant-pagination-next .ant-pagination-item-link {
+    color: var(--color-text-light-100) !important;
+}
+
+
+.light .ant-pagination-options-quick-jumper {
+    font-size: 16px;
+    color: var(--color-text-light-100);
+
+    input {
+        width: 100px !important;
+        height: 36px !important;
+        background: var(--color-bg-light-700) !important;
+        border: 1px solid var(--color-bg-light-700) !important;
+        color: var(--color-text-light-100) !important;
+        outline: none !important;
+        border-radius: 10px !important;
+        font-size: 16px;
+    }
+
+    input:hover {
+        border: 1px solid var(--color-bg-dark-700) !important;
+    }
+
+    input:focus {
+        border: none solid var(--color-bg-dark-700) !important;
+        outline: none !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Dark Mode Pagination */
+
+.custom-pagination .ant-pagination-item {
+    border-radius: 8px !important;
+    background-color: var(--color-bg-dark-700);
+    border: none !important;
+    margin-inline: 8px;
+    padding: 16px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-P4);
+    font-size: 14px;
+}
+
+.custom-pagination .ant-pagination-item-active {
+    background-color: var(--color-primary) !important;
+    cursor: pointer;
+}
+
+.custom-pagination .ant-pagination-item-active a {
+    color: white !important;
+}
+
+.custom-pagination .ant-pagination-item a {
+    color: white;
+}
+
+.custom-pagination .ant-pagination-next,
+.custom-pagination .ant-pagination-prev {
+    border-radius: 8px !important;
+    background-color: var(--color-bg-dark-700);
+    border: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-dark-100) !important;
+    width: 32px !important;
+    height: 32px !important;
+}
+
+
+
+@media (min-width: 640px) {
+    .custom-pagination .ant-pagination-item {
+        font-size: 16px;
+        padding: 18px 16px;
+    }
+
+    .custom-pagination .ant-pagination-next,
+    .custom-pagination .ant-pagination-prev {
+        width: 46px !important;
+        height: 36px !important;
+    }
+}
+
+.ant-pagination-prev .ant-pagination-item-link,
+.ant-pagination-next .ant-pagination-item-link {
+    color: white !important;
+}
+
+
+.ant-pagination-options-quick-jumper {
+    font-size: 16px;
+    color: var(--color-text-dark-100);
+
+    input {
+        width: 100px !important;
+        height: 36px !important;
+        background: var(--color-bg-dark-700) !important;
+        border: 1px solid var(--color-bg-dark-700) !important;
+        color: var(--color-text-dark-100) !important;
+        outline: none !important;
+        border-radius: 10px !important;
+    }
+
+    input:hover {
+        border: 1px solid var(--color-bg-light-900) !important;
+    }
+
+    input:focus {
+        border: 1px solid var(--color-bg-light-900) !important;
+        outline: none !important;
+    }
+}
+
+.movie_detail_tab.active {
+    background-color: var(--color-bg-dark-700);
+    color: var(--color-primary);
+}
+
+.light .movie_detail_tab.active {
+    background-color: var(--color-bg-light-700);
+    color: var(--color-primary);
+}

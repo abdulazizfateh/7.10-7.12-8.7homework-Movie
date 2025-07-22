@@ -26,7 +26,9 @@ const CastMovieDetail = () => {
                                         {
                                             cast?.profile_path
                                                 ?
-                                                <img onClick={() => nav(`/cast/${cast.id}`)} loading='lazy' className='w-full h-32 md:h-40 object-cover rounded-xl hover:scale-[1.01] duration-200 ease-out cursor-pointer' src={IMAGE_URL + cast?.profile_path} alt={cast?.original_name} />
+                                                <div className='w-full h-32 md:h-40 object-cover overflow-hidden rounded-xl'>
+                                                    <img onClick={() => nav(`/cast/${cast.id}`)} loading='lazy' className='w-full h-full object-cover duration-200 ease-out cursor-pointer hover:scale-[1.01]' src={IMAGE_URL + cast?.profile_path} alt={cast?.original_name} />
+                                                </div>
                                                 :
                                                 <div className='w-full h-32 md:h-40 light:bg-bg-light-800 bg-bg-dark-700 rounded-xl flex items-end justify-center'>
                                                     <FaUser className='w-full h-28 md:h-36 light:text-bg-light-900 text-[#bbb] object-cover rounded-xl hover:scale-[1.01] duration-200 ease-out cursor-pointer' />
@@ -41,19 +43,19 @@ const CastMovieDetail = () => {
                 }
                 <h3 className='text-text-dark-100 light:text-text-light-100 text-base tracking-wide md:text-lg lg:text-xl lg:leading-6 mb-5 md:mb-6 mt-10 md:mt-14'>Crew</h3>
                 {
-                    movieCastData?.cast?.length <= 0 ?
+                    movieCastData?.cast?.length <= 0 || !movieCastData?.cast ?
                         <div className='h-[400px] flex items-center justify-center'>No crew data found</div> :
                         <div className='min-h-[400px] grid grid-cols-3 gap-x-1.5 gap-y-3'>
                             {
                                 movieCastData?.crew?.map(cast => (
-                                    <div key={cast.id}>
+                                    <div key={cast.credit_id}>
                                         {
                                             cast?.profile_path
                                                 ?
                                                 <img loading='lazy' className='w-full h-32 md:h-40 object-cover rounded-xl hover:scale-[1.01] duration-200 ease-out' src={IMAGE_URL + cast?.profile_path} alt={cast?.original_name} />
                                                 :
-                                                <div className='w-full h-32 md:h-40 rounded-xl light:bg-bg-light-800 bg-bg-dark-700 flex items-end justify-center'>
-                                                    <FaUser className='w-full h-28 md:h-40 light:text-bg-light-900 text-[#bbb] object-cover rounded-xl hover:scale-[1.01] duration-200 ease-out cursor-pointer' />
+                                                <div className='w-full h-32 md:h-40 light:bg-bg-light-800 bg-bg-dark-700 rounded-xl flex items-end justify-center'>
+                                                    <FaUser className='w-full h-28 md:h-36 light:text-bg-light-900 text-[#bbb] object-cover rounded-xl hover:scale-[1.01] duration-200 ease-out cursor-pointer' />
                                                 </div>
                                         }
                                         <p className='line-clamp-1 text-sm !font-semibold mt-1 mb-.5'>{cast?.original_name}</p>

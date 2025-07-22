@@ -21,7 +21,7 @@ const MovieDetail = () => {
                     <p className='!font-black tracking-wide text-base sm:text-lg md:text-xl leading-6 text-text-dark-100 light:text-text-light-100'>{detailMovieData?.vote_count} <span className='!font-medium text-sm md:text-base text-text-dark-500'>votes</span></p>
                 </div>
             </div>
-            <h3 className='text-text-dark-100 light:text-text-light-100 text-base tracking-wide md:text-lg lg:text-xl lg:leading-6 mb-5 md:mb-6'>Details</h3>
+            <h3 className='text-text-dark-100 light:text-text-light-100 text-lg tracking-wide md:text-xl lg:leading-6 mb-4 md:mb-5'>Details</h3>
             <div className='flex flex-col gap-4 text-text-dark-500 text-sm tracking-wide md:text-base leading-5 pb-7 md:pb-8 border-b border-[#2D2D2D] light:border-bg-light-800'>
                 <div className='flex items-center justify-between'>
                     <p className='text-left'>Duration</p>
@@ -58,13 +58,12 @@ const MovieDetail = () => {
             </div>
             {
                 detailMovieData?.overview ? <div className='pt-7 md:pt-[32px] pb-7 md:pb-8 border-b border-[#2D2D2D] light:border-bg-light-800'>
-                    <h3 className='text-text-dark-100 light:text-text-light-100 text-base tracking-wide md:text-lg lg:text-xl lg:leading-6 mb-5 md:mb-6'>Plot</h3>
+                    <h3 className='text-text-dark-100 light:text-text-light-100 text-lg racking-wide md:text-xl lg:leading-6 mb-4 md:mb-6'>Plot</h3>
                     <div className='w-[90%]'>
                         <p className='text-text-dark-500 text-sm tracking-wide md:text-base leading-5'>{detailMovieData?.overview}</p>
                     </div>
                 </div> : ""
             }
-
         </div>
     )
 }

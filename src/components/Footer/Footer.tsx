@@ -1,6 +1,6 @@
 import React from 'react'
 // Icons & Images
-import logo from "@/assets/images/logo.svg";
+import logo from "@/assets/images/logo-full.svg";
 import iconGooglePlay from "@/assets/images/icon-google-play.svg";
 import iconAppStore from "@/assets/images/icon-app-store.svg";
 import iconPublicOffer from "@/assets/images/icon-public-offer.svg";
@@ -19,7 +19,7 @@ import iconYouTube from "@/assets/images/icon-youtube.svg";
 
 const Footer = () => {
   return (
-    <footer className='site_footer mt-14 sm:mt-16 mb-20 md:mb-5 md:mt-20 lg:mt-[120px]'>
+    <footer className='site_footer sm:mt-16 mb-20 md:mb-5 md:mt-20 lg:mt-[120px]'>
       <div className='container'>
         <div className='footer_wrapper rounded-xl bg-bg-dark-800 light:bg-bg-light-700 px-4 py-[30px] sm:p-[30px] grid gap-10 grid-cols-2 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1.2fr] text-sm sm:text-base leading-5 tracking-wide'>
           <div className='flex flex-col items-start justify-between'>
@@ -32,38 +32,38 @@ const Footer = () => {
           <div className='flex flex-col gap-[18px]'>
             <p className='text-text-dark-100 light:text-text-light-100'>About</p>
             <div className='flex items-center gap-2 cursor-pointer'>
-              <img className='w-5 sm:w-6' src={iconPublicOffer} alt="Icon Public Offer" />
+              <img className='w-6 md:w-7' src={iconPublicOffer} alt="Icon Public Offer" />
               <span className='link_hover_footer'>Public offer</span>
             </div>
             <div className='flex items-center gap-2 cursor-pointer'>
-              <img className='w-5 sm:w-6' src={iconStar} alt="Icon Star" />
+              <img className='w-6 md:w-7' src={iconStar} alt="Icon Star" />
               <span className='link_hover_footer'>Advertising</span>
             </div>
             <div className='flex items-center gap-2 cursor-pointer'>
-              <img className='w-5 sm:w-6' src={iconQuestion} alt="Icon Question" />
+              <img className='w-6 md:w-7' src={iconQuestion} alt="Icon Question" />
               <span className='link_hover_footer'>F.A.Q</span>
             </div>
             <div className='flex items-center gap-2 cursor-pointer'>
-              <img className='w-5 sm:w-6' src={iconCall} alt="Icon Contact" />
+              <img className='w-6 md:w-7' src={iconCall} alt="Icon Contact" />
               <span className='link_hover_footer'>Contacts</span>
             </div>
           </div>
           <div className='flex flex-col gap-[18px]'>
             <p className='text-text-dark-100 light:text-text-light-100'>Categories</p>
             <div className='flex items-center gap-2 cursor-pointer'>
-              <img className='w-5 sm:w-6' src={iconMovie} alt="Icon Movie" />
+              <img className='w-6 md:w-7' src={iconMovie} alt="Icon Movie" />
               <span className='link_hover_footer'>Movie</span>
             </div>
             <div className='flex items-center gap-2 cursor-pointer'>
-              <img className='w-5 sm:w-6' src={iconTheater} alt="Icon Theater" />
+              <img className='w-6 md:w-7' src={iconTheater} alt="Icon Theater" />
               <span className='link_hover_footer'>Theater</span>
             </div>
             <div className='flex items-center gap-2 cursor-pointer'>
-              <img className='w-5 sm:w-6' src={iconConcert} alt="Icon Concert" />
+              <img className='w-6 md:w-7' src={iconConcert} alt="Icon Concert" />
               <span className='link_hover_footer'>Concerts</span>
             </div>
             <div className='flex items-center gap-2 cursor-pointer'>
-              <img className='w-5 sm:w-6' src={iconSport} alt="Icon Sport" />
+              <img className='w-6 md:w-7' src={iconSport} alt="Icon Sport" />
               <span className='link_hover_footer'>Sport</span>
             </div>
           </div>
@@ -74,11 +74,10 @@ const Footer = () => {
             </div>
             <div className='flex flex-col gap-5'>
               <p className='text-text-dark-100 light:text-text-light-100'>Social media</p>
-              <div className='flex items-center gap-5'>
-                <img className='hover:scale-105 duration-150 ease-out cursor-pointer w-5 sm:w-6' src={iconIG} alt="Icon Instagram" />
-                <img className='hover:scale-105 duration-150 ease-out cursor-pointer w-5 sm:w-6' src={iconFacebook} alt="Icon Facebook" />
-                <img className='hover:scale-105 duration-150 ease-out cursor-pointer w-5 sm:w-6' src={iconYouTube} alt="Icon You Tuba" />
-           
+              <div className='flex items-center gap-4'>
+                <img className='hover:scale-105 duration-150 ease-out cursor-pointer w-6 md:w-7' src={iconIG} alt="Icon Instagram" />
+                <img className='hover:scale-105 duration-150 ease-out cursor-pointer w-6 md:w-7' src={iconFacebook} alt="Icon Facebook" />
+                <img className='hover:scale-105 duration-150 ease-out cursor-pointer w-6 md:w-7' src={iconYouTube} alt="Icon You Tuba" />
               </div>
             </div>
           </div>

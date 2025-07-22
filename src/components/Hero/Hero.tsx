@@ -36,10 +36,10 @@ export const Hero = () => {
     const nav = useNavigate();
 
     return (
-        <section className='section_hero max-w-[1424px] mx-auto w-full flex flex-col gap-2 px-3 md:px-8'>
+        <section className='section_hero max-w-[1594px] mx-auto w-full flex flex-col gap-2 px-3 md:px-8'>
             {isLoading && (
                 <>
-                    <div className='max-w-[1360px] h-[350px] sm:h-[520px] md:h-[580px] lg:h-[640px] rounded-xl bg-bg-dark-700 light:bg-bg-light-700'></div>
+                    <div className='max-w-[1530px] h-[350px] sm:h-[520px] md:h-[580px] lg:h-[640px] rounded-xl bg-bg-dark-700 light:bg-bg-light-700'></div>
                     <div className='flex items-center justify-center gap-1'>
                         {Array.from({ length: 4 }).map((_, i) => (
                             <div key={i} className='flex-1 md:flex-none md:w-[109.5px] h-[50px] sm:h-16 rounded-xl bg-bg-dark-700 light:bg-bg-light-700'></div>

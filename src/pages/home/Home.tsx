@@ -13,10 +13,10 @@ const Home = () => {
         window.scrollTo(0, 0);
     }, [])
     const { getMovies } = useMovies();
-    const data = getMovies({ page: 1, without_genres: "18,36,27,10749" });
+    const data = getMovies({ page: 1, without_genres: "18, 10749" });
 
     const isLoading: boolean = data?.isLoading;
-    const moviesData = data?.data?.results?.slice(0, 12);
+    const moviesData = data?.data?.results?.slice(0, 10);
     return (
         <>
             <Hero />
@@ -32,7 +32,7 @@ const Home = () => {
                             </Link>
                         </div>
                         <div className='trending_movies_cards_wrapper'>
-                            <MovieCard data={moviesData} isLoading={isLoading} cardQuantity={12}/>
+                            <MovieCard data={moviesData} isLoading={isLoading} cardQuantity={12} />
                         </div>
                     </div>
                 </div>

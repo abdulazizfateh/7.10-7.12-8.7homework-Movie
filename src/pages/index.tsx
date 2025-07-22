@@ -8,6 +8,8 @@ const DiscoverDetail = lazy(() => import("./discover/DiscoverDetail"));
 const MovieDetail = lazy(() => import("@/components/MovieDetail/MovieDetail"));
 const CastMovieDetail = lazy(() => import("@/components/CastCrewMovieDetail/CastCrewMovieDetail"));
 const Cast = lazy(() => import("./cast/Cast"));
+const Search = lazy(() => import("./search/Search"));
+const Saved = lazy(() => import("./saved/Saved"));
 
 const AppRoutes = () => {
     return (
@@ -22,10 +24,10 @@ const AppRoutes = () => {
                             path: "/discover", element: <Discover />
                         },
                         {
-                            path: "/saved", element: "Saved"
+                            path: "/saved", element: <Saved />
                         },
                         {
-                            path: "/search", element: "Search"
+                            path: "/search", element: <Search />
                         },
                         {
                             path: "/discover/:id", element: <DiscoverDetail />, children: [

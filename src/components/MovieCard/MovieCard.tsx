@@ -10,10 +10,10 @@ import { useGenre } from '@/api/hooks/useGenre';
 import { RiBookmarkLine } from "react-icons/ri";
 import { FaImdb } from "react-icons/fa";
 
-const LoadingMovieCard = ({ cardQuantity }: { cardQuantity: number }) => {
+const LoadingMovieCard = ({ cardQuantity, grid }: { cardQuantity: number | undefined, grid: number | undefined }) => {
     const loadingCardData: string[] = Array(cardQuantity).fill("");
     return (
-        <div className='loading_movie_cards grid grid-cols-2 min-[640px]:grid-cols-3 min-[880px]:grid-cols-4 gap-x-2 gap-y-7 sm:gap-x-4'>
+        <div className={`loading_movie_cards grid grid-cols-2 min-[640px]:grid-cols-3 min-[940px]:grid-cols-4 xl:grid-cols-${grid ? grid : 5} gap-y-7 gap-x-3`}>
             {
                 loadingCardData.map((_, index) => (
                     <div key={index} className='flex flex-col gap-1.5 sm:gap-2'>
@@ -33,16 +33,16 @@ interface Props {
     data: undefined | IMovie[];
     isLoading: boolean;
     cardQuantity: number
+    grid?: number
 }
-const MovieCard: FC<Props> = ({ data: movieData, isLoading, cardQuantity }) => {
+const MovieCard: FC<Props> = ({ data: movieData, isLoading, cardQuantity, grid }) => {
     const { getGenre } = useGenre();
     const { data } = getGenre;
-    const genresList: IGenre[] = data?.genres;
+    const genresList: IGenre[] = data?.genres;    
 
     const getGenreNames = (ids: number[]) => {
         if (!genresList) return [];
-        return ids
-            .map(id => genresList.find(genre => genre.id === id)?.name)
+        return ids?.map(id => genresList.find(genre => genre.id === id)?.name)
     };
 
     const nav = useNavigate();
@@ -50,30 +50,37 @@ const MovieCard: FC<Props> = ({ data: movieData, isLoading, cardQuantity }) => {
     return (
         <>
             {
-                isLoading && <LoadingMovieCard cardQuantity={cardQuantity} />
+                isLoading && <LoadingMovieCard cardQuantity={cardQuantity} grid={grid} />
             }
-            <div className='movie_cards grid grid-cols-2 min-[640px]:grid-cols-3 min-[880px]:grid-cols-4 gap-x-2 gap-y-7 sm:gap-x-4'>
+            <div className={`movie_cards grid grid-cols-2 min-[640px]:grid-cols-3 min-[940px]:grid-cols-4 xl:grid-cols-${grid ? grid : 5} gap-y-7 gap-x-3`}>
                 {
                     movieData?.map((movie) => (
                         <div key={movie.id} className='movie_card flex flex-col gap-1.5 sm:gap-2'>
                             <div className='movie_card_image rounded-xl overflow-hidden relative group'>
-                                <img onClick={() => nav(`/discover/${movie.id}`)} className='h-64 min-[440px]:h-80 min-[520px]:h-[350px] lg:h-[400px] w-full object-cover group-hover:scale-[1.01] duration-200 ease-out cursor-pointer' src={IMAGE_URL + movie.poster_path} alt={movie.title} />
-                                <button className='absolute top-2.5 right-2.5 md:top-4 md:right-3 bg-bg-dark-900/20 p-1.5 rounded-sm backdrop-blur-xs cursor-pointer'>
+                                {
+                                    !movie.poster_path
+                                        ? <div onClick={() => nav(`/discover/${movie.id}`)} className='h-64 min-[440px]:h-80 min-[520px]:h-[350px] lg:h-[400px] bg-bg-dark-700 light:bg-bg-light-700 rounded-xl flex flex-col items-center justify-center text-sm md:text-base'>
+                                            <p className='text-center w-[90%] mx-auto'>{movie.title}</p>
+                                            <p className='text-center w-[90%] mx-auto text-text-dark-500 text-xs md:text-sm'>Poster is not available</p>
+                                        </div>
+                                        : <img onClick={() => nav(`/discover/${movie.id}`)} className='h-64 min-[440px]:h-80 min-[520px]:h-[350px] lg:h-[400px] w-full object-cover group-hover:scale-[1.01] duration-200 ease-out cursor-pointer' src={IMAGE_URL + movie.poster_path} alt={movie.title} />
+                                }
+                                <button className='absolute top-2.5 right-2.5 bg-bg-dark-900/20 p-1.5 rounded-sm backdrop-blur-xs cursor-pointer'>
                                     <RiBookmarkLine className='text-bg-light-700 text-base sm:text-lg md:text-xl' />
                                 </button>
                                 <div className='bg-primary rounded-sm w-12 h-7 flex items-center justify-center absolute top-2.5 left-2.5 md:top-3 md:left-3'>
-                                    <span className='text-text-dark-100 text-xs !font-semibold leading-3'>{movie.release_date.slice(0, 4)}</span>
+                                    <span className='text-text-dark-100 text-xs !font-semibold leading-3'>{movie?.release_date?.slice(0, 4)}</span>
                                 </div>
                                 <button className='absolute top-10 left-2.5 md:top-11 md:right-3 items-center gap-.5 hidden lg:flex'>
                                     <FaImdb className='text-[#f3b701] text-[32px]' />
-                                    <span className='bg-[#f3b701] h-7 px-1.5 rounded-sm flex items-center justify-center text-xs !font-semibold text-text-light-100'>{movie.vote_average.toFixed(1)}</span>
+                                    <span className='bg-[#f3b701] h-7 px-1.5 rounded-sm flex items-center justify-center text-xs !font-semibold text-text-light-100'>{movie?.vote_average?.toFixed(1)}</span>
                                 </button>
                             </div>
                             <div className='movie_card_body flex-1 flex flex-col gap-1.5'>
                                 <p className='text-sm sm:text-base md:text-lg tracking-wide text-text-dark-100 light:text-text-light-100 line-clamp-1'>{movie.title} - <span className='uppercase'>{movie.original_language}</span></p>
                                 <div className='flex-1 flex items-start justify-between gap-2'>
                                     <p className="line-clamp-1 flex items-center gap-1 flex-wrap">
-                                        {getGenreNames(movie.genre_ids.slice(0, 2)).map((genre, index) => (
+                                        {getGenreNames(movie?.genre_ids?.slice(0, 2))?.map((genre, index) => (
                                             <span key={index} className="text-[13px] sm:text-sm leading-4 text-text-dark-600 tracking-wide">
                                                 {genre}{getGenreNames(movie.genre_ids.slice(0, 2)).length === index + 1 ? "" : ","}
                                             </span>
@@ -81,7 +88,7 @@ const MovieCard: FC<Props> = ({ data: movieData, isLoading, cardQuantity }) => {
                                     </p>
                                     <div className='flex items-center gap-1 text-xs !font-semibold lg:hidden light:text-text-light-100 text-text-dark-100'>
                                         <span className='text-[#f3b701] !font-black'>IMDb:</span>
-                                        <span className=''>{movie.vote_average.toFixed(1)}</span>
+                                        <span className=''>{movie?.vote_average?.toFixed(1)}</span>
                                     </div>
                                 </div>
                             </div>

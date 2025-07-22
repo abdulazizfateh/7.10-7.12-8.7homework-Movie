@@ -16,7 +16,7 @@ const NavMobile = () => {
         <>
             <div className='fixed bottom-0 left-0 w-full md:hidden bg-bg-dark-800 light:bg-bg-light-900 z-20'>
                 <div className="container">
-                    <div className="flex items-center justify-between min-[440px]:justify-around h-16 sm:h-[70px] px-4">
+                    <div className="flex items-start justify-between min-[440px]:justify-around h-[60px] sm:h-[70px] px-4">
                         <NavLink onClick={()=> window.scrollTo(0, 0)} className='h-full flex items-center justify-center px-3 min-[400px]:px-4' to={"/"}>
                             {
                                 ({ isActive }) => (
