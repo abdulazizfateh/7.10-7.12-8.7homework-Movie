@@ -98,8 +98,8 @@ export const Hero = () => {
                                     </div>
                                     <div className='flex items-center justify-center'>
                                         <button onClick={() => nav(`/discover/${movie.id}`)} className='w-[50%] min-[450px]:w-[300px] md:w-[380px] h-[38px] sm:h-[52px] flex items-center justify-center gap-[7px] bg-text-dark-100 rounded-xl text-primary'>
-                                            <RiPlayFill className='text-2xl' />
-                                            <span className='tracking-wide'>Watch</span>
+                                            <RiPlayFill className='text-xl md:text-2xl' />
+                                            <span className='tracking-wide text-base md:text-lg'>Watch</span>
                                         </button>
                                     </div>
                                 </div>
