@@ -39,7 +39,7 @@ const DiscoverDetail = () => {
     <>
       {
         isPending ?
-          <div className='section_movie_detail_play_loading max-w-[1594px] px-3 md:px-8 h-[350px] sm:h-[520px] md:h-[580px] lg:h-[640px] mx-auto'>
+          <div className='section_movie_detail_play_loading max-w-[1594px] px-3 md:px-8 h-[270px] sm:h-[400px] md:h-[500px] lg:h-[640px] mx-auto'>
             <div className='w-full h-full bg-bg-dark-700 light:bg-bg-light-700 rounded-xl relative'>
               <button onClick={(() => nav(-1))} className='absolute top-2.5 left-2.5 md:top-3 md:left-3 px-5 py-2 rounded-xl bg-bg-dark-900/40 cursor-pointer flex items-center justify-center'>
                 <GrPrevious className='text-text-dark-100 text-lg md:text-xl lg:text-[22px]' />
@@ -51,9 +51,9 @@ const DiscoverDetail = () => {
             <div className='w-full relative'>
               {
                 detailMovieData?.backdrop_path ?
-                  <img loading='eager' className='w-full h-[350px] sm:h-[520px] md:h-[580px] lg:h-[640px] object-cover rounded-xl select-none' src={IMAGE_URL + detailMovieData?.backdrop_path} alt={detailMovieData?.title} />
+                  <img loading='eager' className='w-full h-[270px] sm:h-[400px] md:h-[500px] lg:h-[640px] object-cover rounded-xl select-none' src={IMAGE_URL + detailMovieData?.backdrop_path} alt={detailMovieData?.title} />
                   :
-                  <div className='section_movie_detail_image_backup flex flex-col items-center justify-center h-[350px] sm:h-[520px] md:h-[580px] lg:h-[640px] mx-auto bg-bg-dark-700 light:bg-bg-light-700 rounded-xl'>
+                  <div className='section_movie_detail_image_backup flex flex-col items-center justify-center h-[270px] sm:h-[400px] md:h-[500px] lg:h-[640px] mx-auto bg-bg-dark-700 light:bg-bg-light-700 rounded-xl'>
                     <p className='text-center text-sm md:text-base text-text-dark-500 light:text-text-light-600'>Poster is not found</p>
                   </div>
               }
@@ -66,16 +66,13 @@ const DiscoverDetail = () => {
                     <RiBookmarkLine className='text-text-dark-100 text-lg md:text-xl lg:text-2xl' />
                 }
               </button>
-              <div className='absolute right-1/2 bottom-6 translate-x-1/2 flex flex-col gap-0 w-full'>
-                <h1 className='text-xl sm:text-[22px] md:text-[28px] text-center lg:text-[32px] w-[92%] sm:w-[80%] mx-auto md:w-full text-text-dark-100 tracking-wide text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]'>
+              <div className='absolute right-1/2 bottom-3 md:bottom-6 translate-x-1/2 flex flex-col gap-1.5 sm:gap-3 md:gap-4 w-full'>
+                <h1 className='text-xl sm:text-[22px] md:text-[28px] text-center lg:text-[32px] w-[98%] sm:w-[80%] mx-auto md:w-full text-text-dark-100 tracking-wide text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]'>
                   {detailMovieData.title}
                 </h1>
-                <div className='flex items-center justify-center mb-4'>
-                  <p className='tracking-wide text-text-dark-100 text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]'>{detailMovieData?.tagline}</p>
-                </div>
                 <div className='flex items-center justify-center'>
-                  <button className='w-[82%] min-[450px]:w-[380px] md:w-[380px] h-12 sm:h-[52px] flex items-center justify-center gap-[7px] bg-text-dark-100 rounded-xl text-primary'>
-                    <RiPlayFill className='text-2xl' />
+                  <button className='w-[50%] min-[450px]:w-[300px] md:w-[380px] h-[38px] sm:h-[52px] flex items-center justify-center gap-[7px] bg-text-dark-100 rounded-xl text-primary'>
+                    <RiPlayFill className='text-lg md:text-2xl' />
                     <span className='tracking-wide'>Watch</span>
                   </button>
                 </div>

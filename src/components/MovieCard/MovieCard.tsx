@@ -77,17 +77,17 @@ const MovieCard: FC<Props> = ({ data: movieData, isLoading, cardQuantity, grid }
                                         </div>
                                         : <img onClick={() => nav(`/discover/${movie.id}`)} className='h-64 min-[440px]:h-80 min-[520px]:h-[350px] lg:h-[400px] w-full object-cover group-hover:scale-[1.01] duration-200 ease-out cursor-pointer' src={IMAGE_URL + movie.poster_path} alt={movie.title} />
                                 }
-                                <button onClick={() => handleSaved(movie)} className='absolute top-2.5 right-2.5 bg-bg-dark-900/20 p-1 rounded-sm backdrop-blur-xs cursor-pointer'>
+                                <button onClick={() => handleSaved(movie)} className='absolute top-2 right-2 bg-bg-dark-900/20 p-1 rounded-sm backdrop-blur-xs cursor-pointer'>
                                     {
-                                        saved.some(item => item.id === movie.id) ? <RiBookmarkFill className='text-bg-light-700 text-lg md:text-xl lg:text-2xl' /> : <RiBookmarkLine className='text-bg-light-700 text-lg md:text-xl lg:text-2xl' />
+                                        saved.some(item => item.id === movie.id) ? <RiBookmarkFill className='text-bg-light-700 text-xl md:text-2xl' /> : <RiBookmarkLine className='text-bg-light-700 text-xl md:text-2xl' />
                                     }
                                 </button>
-                                <div className='bg-primary rounded-sm w-12 h-7 flex items-center justify-center absolute top-2.5 left-2.5 md:top-3 md:left-3'>
-                                    <span className='text-text-dark-100 text-xs !font-semibold leading-3'>{movie?.release_date?.slice(0, 4)}</span>
+                                <div className='bg-primary rounded-sm w-10 h-5 md:w-12 md:h-7 flex items-center justify-center absolute top-2 left-2'>
+                                    <span className='text-text-dark-100 text-xs md:text-sm !font-semibold leading-3'>{movie?.release_date?.slice(0, 4)}</span>
                                 </div>
-                                <button className='absolute top-10 left-2.5 md:top-11 md:right-3 items-center gap-.5 hidden lg:flex'>
+                                <button className='absolute top-8 left-2 md:top-10 md:right-2 items-center gap-.5 hidden lg:flex'>
                                     <FaImdb className='text-[#f3b701] text-[32px]' />
-                                    <span className='bg-[#f3b701] h-7 px-1.5 rounded-sm flex items-center justify-center text-xs !font-semibold text-text-light-100'>{movie?.vote_average?.toFixed(1)}</span>
+                                    <span className='bg-[#f3b701] h-7 px-1.5 rounded-sm flex items-center justify-center text-xs md:text-sm !font-semibold text-text-light-100'>{movie?.vote_average?.toFixed(1)}</span>
                                 </button>
                             </div>
                             <div className='movie_card_body flex-1 flex flex-col gap-1.5'>
