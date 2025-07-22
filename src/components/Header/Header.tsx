@@ -39,6 +39,34 @@ const Header = () => {
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (isOpen) {
+      // Prevent scrolling on the body when menu is open
+      document.body.style.overflow = 'hidden'
+      document.body.style.position = 'fixed'
+      document.body.style.width = '100%'
+      // Store current scroll position
+      document.body.style.top = `-${window.scrollY}px`
+    } else {
+      // Re-enable scrolling when menu is closed
+      const scrollY = document.body.style.top
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.width = ''
+      document.body.style.top = ''
+      // Restore scroll position
+      window.scrollTo(0, parseInt(scrollY || '0') * -1)
+    }
+
+    // Cleanup function
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.width = ''
+      document.body.style.top = ''
+    }
+  }, [isOpen])
+
   return (
     <>
       <header className={`site_header bg-bg-dark-900 light:bg-bg-light-900 relative z-50 flex justify-between items-center transition-opacity duration-300 ${isOpen ? "opacity-0" : "opacity-100"}`}>
@@ -134,7 +162,7 @@ const Header = () => {
         </div>
       </header>
 
-      <div className={`menu_button ${isOpen ? "fixed" : "absolute"} w-full z-[60] top-5 right-2 flex items-center justify-end`}>
+      <div className={`menu_button ${isOpen ? "fixed" : "absolute"} z-[60] top-5 right-2 flex items-center justify-end`}>
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="flex flex-col justify-between z-50 items-end space-y-2 p-2 sm:px-4 md:hidden"
@@ -150,7 +178,7 @@ const Header = () => {
         </button>
       </div>
 
-      <div className={`menu_content fixed top-0 right-0 h-screen w-full bg-bg-dark-900 light:bg-bg-light-900 z-40 transform transition-transform duration-300 ease-out ${isOpen ? "translate-x-0" : "translate-x-full"
+      <div className={`menu_content fixed top-0 right-0 h-screen overflow-hidden w-full bg-bg-dark-900 light:bg-bg-light-900 z-40 transform transition-transform duration-300 ease-out ${isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="w-full h-full bg-bg-dark-900 light:bg-bg-light-900 p-[12px]">
