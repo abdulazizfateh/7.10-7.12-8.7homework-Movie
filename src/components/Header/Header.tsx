@@ -134,7 +134,7 @@ const Header = () => {
         </div>
       </header>
 
-      <div className="menu_button absolute w-full top-5 right-2 flex items-center justify-end">
+      <div className="menu_button fixed w-full z-[60] top-5 right-2 flex items-center justify-end">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="flex flex-col justify-between z-50 items-end space-y-2 p-2 sm:px-4 md:hidden"
