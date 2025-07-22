@@ -12,6 +12,9 @@ import { useGenre } from '@/api/hooks/useGenre';
 import type { IGenre, IMovie } from '@/types/types';
 // Icons
 import { RiPlayFill } from "react-icons/ri";
+import fallbackImage from "@/assets/images/fallback-image.webp"
+import logo from "@/assets/images/logo-full.svg";
+
 // Swiper Type
 import type { Swiper as SwiperType } from 'swiper';
 import { useNavigate } from 'react-router-dom';
@@ -24,6 +27,8 @@ export const Hero = () => {
 
     const madagaskar: IMovie = data?.results?.slice(7, 8)[0];
     const moviesData: IMovie[] = data?.results?.slice(9, 19) || [];
+    console.log(moviesData);
+
     if (madagaskar) moviesData.unshift(madagaskar);
 
     const { getGenre } = useGenre();
@@ -66,7 +71,13 @@ export const Hero = () => {
                     >
                         {moviesData.map((movie) => (
                             <SwiperSlide key={movie.id}>
-                                <img className='w-full h-full object-contain' src={IMAGE_URL + movie.backdrop_path} loading='lazy' alt={movie.title} />
+                                {
+                                    !movie.backdrop_path ?
+                                        <div className='section_movie_detail_image_backup flex flex-col items-center justify-center pb-16 h-[350px] sm:h-[520px] md:h-[580px] lg:h-[640px] mx-auto bg-bg-dark-700 light:bg-bg-light-700 rounded-xl'>
+                                            <p className='text-center text-sm md:text-base text-text-dark-500 light:text-text-light-600'>Poster is not found</p>
+                                        </div>
+                                        : <img className='w-full h-full object-contain' src={IMAGE_URL + movie.backdrop_path} loading='lazy' alt={movie.title} />
+                                }
                                 <div className='absolute right-1/2 bottom-6 translate-x-1/2 flex flex-col gap-4 w-full'>
                                     <div className='flex items-center justify-center mx-auto w-[92%] sm:w-[80%] md:w-full'>
                                         <h1 onClick={() => nav(`/discover/${movie.id}`)} className='link_hover_hero text-xl sm:text-[22px] md:text-[28px] lg:text-[32px] mx-auto text-text-dark-100 tracking-wide text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)] cursor-pointer'>
@@ -77,7 +88,7 @@ export const Hero = () => {
                                         <p className='text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]'>{movie.release_date.slice(0, 4)}</p>
                                         <span className='text-xs leading-4'>•</span>
                                         <p className="line-clamp-1 flex items-center gap-1 flex-wrap">
-                                            {getGenreNames(movie.genre_ids.slice(0, 1)).map((genre, index) => (
+                                            {getGenreNames(movie?.genre_ids?.slice(0, 1))?.map((genre, index) => (
                                                 <span key={index} className='text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]'>{genre}</span>
                                             ))}
                                         </p>
@@ -107,7 +118,7 @@ export const Hero = () => {
                     >
                         {moviesData.map((movie) => (
                             <SwiperSlide key={movie.id} className='overflow-hidden rounded-xl cursor-pointer'>
-                                <img className='w-full h-full object-contain hover:scale-105 duration-150 ease-out' src={IMAGE_URL + movie.backdrop_path} loading='lazy' />
+                                <img className='w-full h-full object-contain hover:scale-105 duration-150 ease-out' src={movie.backdrop_path ? IMAGE_URL + movie.backdrop_path : fallbackImage} loading='lazy' />
                             </SwiperSlide>
                         ))}
                     </Swiper>

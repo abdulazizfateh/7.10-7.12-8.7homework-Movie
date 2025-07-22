@@ -39,7 +39,7 @@ const Cast = () => {
                                                 : ""
                                     }
                                 </div>
-                                <h3 className='text-text-dark-100 light:text-text-light-100 text-lg tracking-wide md:textg-xl lg:leading-6 mb-4 md:mb-6'>Details</h3>
+                                <h3 className='text-text-dark-100 light:text-text-light-100 text-lg tracking-wide md:text-xl lg:leading-6 mb-4 md:mb-6'>Personal info</h3>
                                 <div className='flex flex-col gap-2 sm:gap-4 text-text-dark-500 text-sm tracking-wide md:text-base leading-5 pb-7 md:pb-8 border-b border-[#2D2D2D] light:border-bg-light-800'>
                                     <div className='flex items-start justify-between'>
                                         <p className='text-left'>Full name:</p>
@@ -55,7 +55,7 @@ const Cast = () => {
                                     </div>
                                     <div className='flex items-start justify-between'>
                                         <p className='text-left'>Born:</p>
-                                        <p className='text-right text-text-dark-100 light:text-text-light-100'>{castData?.birthday.split("-").reverse().join(".")} <br /> {castData?.place_of_birth.split(", ").slice(-2).join(", ")}</p>
+                                        <p className='text-right text-text-dark-100 light:text-text-light-100'>{castData?.birthday?.split("-")?.reverse()?.join(".")} <br /> {castData?.place_of_birth?.split(", ")?.slice(-2)?.join(", ")}</p>
                                     </div>
                                     {
                                         castData?.deathday && <div className='flex items-start justify-between'>
@@ -68,12 +68,18 @@ const Cast = () => {
                                         <p className='text-right text-text-dark-100 light:text-text-light-100'>{castData?.gender === 1 ? "Female" : castData?.gender === 2 ? "Male" : "Other/unknown"}</p>
                                     </div>
                                 </div>
-                                <div className='pt-7 md:pt-[32px] pb-7 md:pb-8 border-b border-[#2D2D2D] light:border-bg-light-800'>
-                                    <h3 className='text-text-dark-100 light:text-text-light-100 text-lg tracking-wide md:text-xl lg:leading-6 mb-4 md:mb-6'>Biography</h3>
-                                    <div>
-                                        <p className='text-text-dark-500 text-sm md:text-base leading-6'>{castData?.biography}</p>
-                                    </div>
-                                </div>
+                                {
+                                    castData?.biography
+                                        ?
+                                        <div className='pt-7 md:pt-[32px] pb-7 md:pb-8 border-b border-[#2D2D2D] light:border-bg-light-800'>
+                                            <h3 className='text-text-dark-100 light:text-text-light-100 text-lg tracking-wide md:text-xl lg:leading-6 mb-4 md:mb-6'>Biography</h3>
+                                            <div>
+                                                <p className='text-text-dark-500 text-sm md:text-base leading-6'>{castData?.biography}</p>
+                                            </div>
+                                        </div>
+                                        :
+                                        ""
+                                }
                             </div>
                         </div>
                         <div className='cast_detail_movies xl:overflow-y-auto xl:pl-1 pb-7'>

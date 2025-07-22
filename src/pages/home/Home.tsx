@@ -24,7 +24,7 @@ const Home = () => {
                 <div className="container">
                     <div className='trending_movies_wrapper'>
                         <div className='trending_movies_title_wrapper flex items-center justify-between w-full mb-4'>
-                            <p className='text-base sm:text-xl leading-6 tracking-wide text-text-dark-100 light:text-text-light-100'>This week</p>
+                            <h1 className='text-base sm:text-xl leading-6 tracking-wide text-text-dark-100 light:text-text-light-100'>This week</h1>
                             <Link to={"/discover"}
                                 className="flex items-center link_hover">
                                 <span className='text-sm sm:text-base'>Show all</span>
@@ -32,7 +32,7 @@ const Home = () => {
                             </Link>
                         </div>
                         <div className='trending_movies_cards_wrapper'>
-                            <MovieCard data={moviesData} isLoading={isLoading} cardQuantity={12} />
+                            <MovieCard data={moviesData} isLoading={isLoading} cardQuantity={10} />
                         </div>
                     </div>
                 </div>

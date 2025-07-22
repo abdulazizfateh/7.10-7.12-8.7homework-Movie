@@ -35,8 +35,6 @@ const Header = () => {
 
   const handleMenuClose = () => {
     setIsOpen(false)
-    console.log(10);
-
   }
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -114,40 +112,46 @@ const Header = () => {
                 </NavLink>
               </li>
             </ul>
-            <div className='flex items-center gap-2 md:gap-3'>
-              <button onClick={handleTheme} className='hidden md:flex size-11 xl:size-12 items-center justify-center gap-2 bg-bg-dark-800 hover:bg-bg-dark-700 light:bg-bg-light-700 light:hover:bg-bg-light-800 duration-150 ease-out rounded-full'>
+            <div className="flex items-center gap-1.5 md:hidden">
+              {
+                !isOpen ? <Link to={"/search"}>
+                  <RiSearchLine className="text-xl" />
+                </Link> : ""
+              }
+              <button className="w-9 bg-red-500"></button>
+            </div>
+            <div className='hidden md:flex items-center gap-2 md:gap-3'>
+              <button onClick={handleTheme} className='flex size-11 xl:size-12 items-center justify-center gap-2 bg-bg-dark-800 hover:bg-bg-dark-700 light:bg-bg-light-700 light:hover:bg-bg-light-800 duration-150 ease-out rounded-full'>
                 {
                   theme ? <PiMoonLight className="text-2xl text-text-dark-100 light:text-text-light-100" /> : <GoSun className="text-2xl" />
                 }
               </button>
-
-
-
-              <button className='hidden md:block bg-primary rounded-xl h-11 px-10 xl:h-12 xl:px-12 tracking-wide'>
+              <button className='block bg-primary rounded-xl h-11 px-10 xl:h-12 xl:px-12 tracking-wide'>
                 <span className="text-text-dark-100">Sign in</span>
               </button>
             </div>
           </nav>
         </div>
       </header>
-      <div className="absolute w-full top-5 right-2 flex items-center justify-end">
+
+      <div className="menu_button absolute w-full top-5 right-2 flex items-center justify-end">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="flex flex-col justify-between z-50 items-end space-y-2 p-2 sm:px-4 md:hidden"
         >
           <span
-            className={`block h-[1px] w-5 bg-white transform transition-all duration-300 ease-in-out ${isOpen ? "rotate-45 translate-y-[5px]" : ""
+            className={`block h-[1.5px] w-5 bg-white transform transition-all duration-300 ease-in-out ${isOpen ? "rotate-45 translate-y-[5.5px]" : ""
               }`}
           />
           <span
-            className={`block h-[1px] w-5 bg-white transform transition-all duration-300 ease-in-out ${isOpen ? "-rotate-45 -translate-y-[4px]" : ""
+            className={`block h-[1.5px] w-5 bg-white transform transition-all duration-300 ease-in-out ${isOpen ? "-rotate-45 -translate-y-[4px]" : ""
               }`}
           />
         </button>
       </div>
-      <div
-        className={`fixed top-0 right-0 h-screen w-full bg-bg-dark-900 light:bg-bg-light-900 z-40 transform transition-transform duration-200 ease-out ${isOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+
+      <div className={`menu_content fixed top-0 right-0 h-screen w-full bg-bg-dark-900 light:bg-bg-light-900 z-40 transform transition-transform duration-300 ease-out ${isOpen ? "translate-x-0" : "translate-x-full"
+        }`}
       >
         <div className="w-full h-full bg-bg-dark-900 light:bg-bg-light-900 p-[12px]">
           <nav className="">

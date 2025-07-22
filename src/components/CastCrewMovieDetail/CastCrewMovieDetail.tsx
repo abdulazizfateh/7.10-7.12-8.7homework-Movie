@@ -14,12 +14,12 @@ const CastMovieDetail = () => {
 
     return (
         <>
-            <div className='movie_detail_cast mt-8 md:mt-12 min-h-[60vh]'>
+            <div className='movie_detail_cast mt-8 md:mt-12'>
                 <h3 className='text-text-dark-100 light:text-text-light-100 text-base tracking-wide md:text-lg lg:text-xl lg:leading-6 mb-5 md:mb-6'>Cast</h3>
                 {
                     movieCastData?.cast?.length <= 0 ?
-                        <div className='h-[400px] flex items-center justify-center'>No cast data found</div> :
-                        <div className='min-h-[400px] grid grid-cols-3 gap-x-1.5 gap-y-3'>
+                        <div className='h-[200px] flex items-center justify-center'>No cast data found</div> :
+                        <div className='min-h-[200px] grid grid-cols-3 gap-x-1.5 gap-y-3'>
                             {
                                 movieCastData?.cast?.map(cast => (
                                     <div key={cast.id}>
@@ -44,8 +44,8 @@ const CastMovieDetail = () => {
                 <h3 className='text-text-dark-100 light:text-text-light-100 text-base tracking-wide md:text-lg lg:text-xl lg:leading-6 mb-5 md:mb-6 mt-10 md:mt-14'>Crew</h3>
                 {
                     movieCastData?.cast?.length <= 0 || !movieCastData?.cast ?
-                        <div className='h-[400px] flex items-center justify-center'>No crew data found</div> :
-                        <div className='min-h-[400px] grid grid-cols-3 gap-x-1.5 gap-y-3'>
+                        <div className='h-[200px] flex items-center justify-center'>No crew data found</div> :
+                        <div className='min-h-[200px] grid grid-cols-3 gap-x-1.5 gap-y-3'>
                             {
                                 movieCastData?.crew?.map(cast => (
                                     <div key={cast.credit_id}>

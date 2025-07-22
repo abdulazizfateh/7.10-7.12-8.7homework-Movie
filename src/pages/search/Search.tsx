@@ -27,7 +27,6 @@ const Search = () => {
 
     const { data, isLoading } = getMoviesBySearch({ query: query ? query : debounceValue, page: Number(page) });
     const searchData = data;
-    console.log(searchData);
 
     useEffect(() => {
         if (debounceValue) {
@@ -63,6 +62,8 @@ const Search = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    console.log(searchData);
+
     return (
         <section className='section_search'>
             <div className="container">
@@ -85,7 +86,7 @@ const Search = () => {
                                         className='custom-pagination !gap-1 sm:!gap-0'
                                         pageSize={20}
                                         current={Number(page)}
-                                        total={100}
+                                        total={searchData?.total_results}
                                         onChange={handleChange}
                                         showSizeChanger={false}
                                         showLessItems={isMobile}
