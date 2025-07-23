@@ -1,4 +1,3 @@
-import path from 'path';
 import React, { lazy } from 'react'
 import { useRoutes } from 'react-router-dom';
 // Pages
