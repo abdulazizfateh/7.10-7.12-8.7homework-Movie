@@ -4,7 +4,7 @@ import { IMAGE_URL } from '@/const';
 // React Query
 import { useMovies } from '@/api/hooks/useMovies';
 // Types
-import type { IMovie, IMovieDetail } from '@/types/types';
+import type { IMovie, IMovieDetail, IUser } from '@/types/types';
 // Components
 import MovieCard from '@/components/MovieCard/MovieCard';
 // Icons
@@ -13,8 +13,10 @@ import { RiBookmarkFill, RiBookmarkLine, RiPlayFill } from 'react-icons/ri';
 import { useStore } from '@/zustand/useStore';
 
 const DiscoverDetail = () => {
-  const { id } = useParams();
   const nav = useNavigate();
+  const userInfo: IUser | null = JSON.parse(localStorage.getItem("user_info") || "null");
+
+  const { id } = useParams();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id])
@@ -33,7 +35,11 @@ const DiscoverDetail = () => {
   const { saved, toggleSaved } = useStore();
 
   const handleSaved = (detailMovieData: any) => {
-    toggleSaved(detailMovieData);
+    if (userInfo) {
+      toggleSaved(detailMovieData);
+    } else {
+      nav("/signin");
+    }
   }
   return (
     <>

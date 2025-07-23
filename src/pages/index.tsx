@@ -1,3 +1,4 @@
+import path from 'path';
 import React, { lazy } from 'react'
 import { useRoutes } from 'react-router-dom';
 // Pages
@@ -10,6 +11,7 @@ const CastMovieDetail = lazy(() => import("@/components/CastCrewMovieDetail/Cast
 const Cast = lazy(() => import("./cast/Cast"));
 const Search = lazy(() => import("./search/Search"));
 const Saved = lazy(() => import("./saved/Saved"));
+const SignIn = lazy(() => import("./signin/SignIn"))
 
 const AppRoutes = () => {
     return (
@@ -43,7 +45,11 @@ const AppRoutes = () => {
                             path: "/cast/:id", element: <Cast />
                         }
                     ]
+                },
+                {
+                    path: "/signin", element: <SignIn />
                 }
+
             ]
         )
     )

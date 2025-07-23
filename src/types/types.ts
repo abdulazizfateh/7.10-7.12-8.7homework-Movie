@@ -118,3 +118,13 @@ export interface ICastDetail {
     popularity: number;
     profile_path: string;
 }
+
+export interface IUser {
+    email: string,
+    email_verified: boolean,
+    family_name: string,
+    given_name: string,
+    name: string,
+    picture: string,
+    sub: string
+  }

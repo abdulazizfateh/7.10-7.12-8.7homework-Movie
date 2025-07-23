@@ -14,6 +14,7 @@ import { RiSearchFill } from "react-icons/ri";
 // import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { GoSun } from "react-icons/go";
 import { PiMoonLight } from "react-icons/pi";
+import type { IUser } from "@/types/types";
 
 const Header = () => {
   // Theme
@@ -36,29 +37,22 @@ const Header = () => {
   const handleMenuClose = () => {
     setIsOpen(false)
   }
-
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
   useEffect(() => {
     if (isOpen) {
-      // Prevent scrolling on the body when menu is open
       document.body.style.overflow = 'hidden'
       document.body.style.position = 'fixed'
       document.body.style.width = '100%'
-      // Store current scroll position
       document.body.style.top = `-${window.scrollY}px`
     } else {
-      // Re-enable scrolling when menu is closed
       const scrollY = document.body.style.top
       document.body.style.overflow = ''
       document.body.style.position = ''
       document.body.style.width = ''
       document.body.style.top = ''
-      // Restore scroll position
       window.scrollTo(0, parseInt(scrollY || '0') * -1)
     }
 
-    // Cleanup function
     return () => {
       document.body.style.overflow = ''
       document.body.style.position = ''
@@ -66,6 +60,8 @@ const Header = () => {
       document.body.style.top = ''
     }
   }, [isOpen])
+
+  const userInfo: IUser | null = JSON.parse(localStorage.getItem("user_info") || "null");
 
   return (
     <>
@@ -154,9 +150,19 @@ const Header = () => {
                   theme ? <PiMoonLight className="text-2xl text-text-dark-100 light:text-text-light-100" /> : <GoSun className="text-2xl" />
                 }
               </button>
-              <button className='block bg-primary rounded-xl h-11 px-10 xl:h-12 xl:px-12 tracking-wide'>
-                <span className="text-text-dark-100">Sign in</span>
-              </button>
+
+              {
+                userInfo ?
+                  <button className='cursor-pointer'>
+                    <img className="h-9 xl:h-10 rounded-full" src={userInfo.picture} alt={`${userInfo.email} picture`} />
+                  </button>
+                  :
+                  <Link to={"/signin"}>
+                    <button className='block bg-primary rounded-xl h-11 px-10 xl:h-12 xl:px-12 tracking-wide'>
+                      <span className="text-text-dark-100">Sign in</span>
+                    </button>
+                  </Link>
+              }
             </div>
           </nav>
         </div>
@@ -168,11 +174,11 @@ const Header = () => {
           className="flex flex-col justify-between z-50 items-end space-y-2 p-2 sm:px-4 md:hidden"
         >
           <span
-            className={`block h-[1.5px] w-5 bg-white transform transition-all duration-300 ease-in-out ${isOpen ? "rotate-45 translate-y-[5.5px]" : ""
+            className={`block h-[1.5px] w-5 bg-bg-light-900 light:bg-bg-dark-900 transform transition-all duration-300 ease-in-out ${isOpen ? "rotate-45 translate-y-[5.5px]" : ""
               }`}
           />
           <span
-            className={`block h-[1.5px] w-5 bg-white transform transition-all duration-300 ease-in-out ${isOpen ? "-rotate-45 -translate-y-[4px]" : ""
+            className={`block h-[1.5px] w-5 bg-bg-light-900 light:bg-bg-dark-900 transform transition-all duration-300 ease-in-out ${isOpen ? "-rotate-45 -translate-y-[4px]" : ""
               }`}
           />
         </button>

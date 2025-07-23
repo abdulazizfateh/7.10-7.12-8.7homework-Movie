@@ -26,7 +26,6 @@ export const Hero = () => {
 
     const madagaskar: IMovie = data?.results?.slice(7, 8)[0];
     const moviesData: IMovie[] = data?.results?.slice(9, 19) || [];
-    console.log(moviesData);
 
     if (madagaskar) moviesData.unshift(madagaskar);
 

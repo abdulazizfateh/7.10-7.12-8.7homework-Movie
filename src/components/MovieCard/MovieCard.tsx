@@ -1,6 +1,6 @@
 import React, { type FC } from 'react'
 // Types
-import type { IGenre, IMovie } from '@/types/types';
+import type { IGenre, IMovie, IUser } from '@/types/types';
 import { useNavigate } from 'react-router-dom';
 // IMG URL
 import { IMAGE_URL } from '@/const';
@@ -40,6 +40,9 @@ interface Props {
     grid?: number | undefined;
 }
 const MovieCard: FC<Props> = ({ data: movieData, isLoading, cardQuantity, grid }) => {
+    const nav = useNavigate();
+    const userInfo: IUser | null = JSON.parse(localStorage.getItem("user_info") || "null");
+
     const { getGenre } = useGenre();
     const { data } = getGenre;
     const genresList: IGenre[] = data?.genres;
@@ -49,14 +52,17 @@ const MovieCard: FC<Props> = ({ data: movieData, isLoading, cardQuantity, grid }
         return ids?.map(id => genresList.find(genre => genre.id === id)?.name)
     };
 
-    const nav = useNavigate();
 
 
 
     // Zustand - Saved
     const { saved, toggleSaved } = useStore();
     const handleSaved = (movie: IMovie) => {
-        toggleSaved(movie);
+        if (userInfo) {
+            toggleSaved(movie);
+        } else {
+            nav("/signin");
+        }
     }
 
     return (
