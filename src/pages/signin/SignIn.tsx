@@ -83,11 +83,11 @@ const SignIn = () => {
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)} className='w-full flex flex-col gap-2 lg:gap-3'>
                             <div className='flex flex-col gap-.5'>
-                                <input {...register("email")} className='w-full h-14 lg:h-[60px] rounded-xl px-4 bg-bg-dark-800 light:bg-bg-light-700 text-text-dark-100 light:text-text-light-100 text-sm lg:text-base tracking-wide outline-none' type='text' placeholder='Email Address' autoComplete='off' />
+                                <input {...register("email")} className='w-full h-14 lg:h-[60px] rounded-xl px-4 bg-bg-dark-800 light:bg-bg-light-700 text-text-dark-100 light:text-text-light-100 text-base tracking-wide outline-none' type='text' placeholder='Email Address' autoComplete='off' />
                                 <p className='text-sm text-primary'>{errors.email?.message}</p>
                             </div>
                             <div className='flex flex-col gap-.5 mt-.5'>
-                                <input {...register("password")} className='w-full h-14 lg:h-[60px] rounded-xl px-4 bg-bg-dark-800 light:bg-bg-light-700 text-text-dark-100 light:text-text-light-100 text-sm lg:text-base tracking-wide outline-none' type='password' placeholder='Password' autoComplete='off' />
+                                <input {...register("password")} className='w-full h-14 lg:h-[60px] rounded-xl px-4 bg-bg-dark-800 light:bg-bg-light-700 text-text-dark-100 light:text-text-light-100 text-base tracking-wide outline-none' type='password' placeholder='Password' autoComplete='off' />
                                 <p className='text-sm text-primary'>{errors.password?.message}</p>
                             </div>
                             <button
@@ -118,7 +118,7 @@ const SignIn = () => {
                                         ></path>
                                     </svg>
                                 )}
-                                <span className="text-sm lg:text-base text-text-dark-100">
+                                <span className="text-base text-text-dark-100">
                                     {isLoading ? "Signing In..." : "Sign In"}
                                 </span>
                             </button>
@@ -129,11 +129,11 @@ const SignIn = () => {
                                 <p className='text-sm text-primary text-center'>Internal Error! If the issue persists, please try signing in using your google account</p>
                             }
                         </div>
-                        <p className='text-sm sm:text-base text-text-dark-600 light:text-text-dark-500 text-center tracking-wide mb-2 lg:mb-3'>or</p>
+                        <p className='text-base text-text-dark-600 light:text-text-dark-500 text-center tracking-wide mb-2 lg:mb-3'>or</p>
                         <div className='w-full'>
                             <button onClick={() => login()} className='w-full rounded-xl h-14 lg:h-[60px] bg-bg-dark-800 light:bg-bg-light-700 flex items-center justify-center gap-2'>
                                 <FcGoogle className='text-xl lg:text-2xl' />
-                                <span className='text-sm lg:text-base text-text-dark-100 light:text-text-light-100 tracking-wide'>Sign in with Google</span>
+                                <span className='text-base text-text-dark-100 light:text-text-light-100 tracking-wide'>Sign in with Google</span>
                             </button>
                         </div>
                     </div>
