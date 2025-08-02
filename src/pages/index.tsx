@@ -10,7 +10,7 @@ const CastMovieDetail = lazy(() => import("@/components/CastCrewMovieDetail/Cast
 const Cast = lazy(() => import("./cast/Cast"));
 const Search = lazy(() => import("./search/Search"));
 const Saved = lazy(() => import("./saved/Saved"));
-const SignIn = lazy(() => import("./signin/SignIn"))
+const SignIn = lazy(() => import("./signup/SignUp"))
 
 const AppRoutes = () => {
     return (
@@ -46,7 +46,7 @@ const AppRoutes = () => {
                     ]
                 },
                 {
-                    path: "/signin", element: <SignIn />
+                    path: "/signup", element: <SignIn />
                 }
 
             ]

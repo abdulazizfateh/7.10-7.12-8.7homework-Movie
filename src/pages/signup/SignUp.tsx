@@ -20,7 +20,7 @@ interface IForm {
     password: string
 }
 
-const SignIn = () => {
+const SignUp = () => {
     const { addAuth } = useStore();
     const nav = useNavigate();
     const {
@@ -78,8 +78,8 @@ const SignIn = () => {
                     </button>
                     <div className='w-[95%] min-[480px]:w-[380px] sm:pb-[50px]'>
                         <div className='mb-4 sm:mb-5 lg:mb-6 flex flex-col gap-2 lg:gap-3'>
-                            <h1 className='text-2xl sm:text-3xl lg:text-[32px] text-text-dark-100 light:text-text-light-100 text-center tracking-wide'>Sign In</h1>
-                            <p className='sm:w-[300px] mx-auto text-sm sm:text-base text-text-dark-600 light:text-text-dark-500 text-center tracking-wide'>Enter your email address to log in or register</p>
+                            <h1 className='text-2xl sm:text-3xl lg:text-[32px] text-text-dark-100 light:text-text-light-100 text-center tracking-wide'>Sign Up</h1>
+                            <p className='sm:w-[300px] mx-auto text-sm sm:text-base text-text-dark-600 light:text-text-dark-500 text-center tracking-wide'>Enter your email address to sign up</p>
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)} className='w-full flex flex-col gap-2 lg:gap-3'>
                             <div className='flex flex-col gap-.5'>
@@ -119,7 +119,7 @@ const SignIn = () => {
                                     </svg>
                                 )}
                                 <span className="text-base text-text-dark-100">
-                                    {isLoading ? "Signing In..." : "Sign In"}
+                                    {isLoading ? "Signing Up..." : "Sign Up"}
                                 </span>
                             </button>
                         </form>
@@ -133,7 +133,7 @@ const SignIn = () => {
                         <div className='w-full'>
                             <button onClick={() => login()} className='w-full rounded-xl h-14 lg:h-[60px] bg-bg-dark-800 light:bg-bg-light-700 flex items-center justify-center gap-2'>
                                 <FcGoogle className='text-xl lg:text-2xl' />
-                                <span className='text-base text-text-dark-100 light:text-text-light-100 tracking-wide'>Sign in with Google</span>
+                                <span className='text-base text-text-dark-100 light:text-text-light-100 tracking-wide'>Sign up with Google</span>
                             </button>
                         </div>
                     </div>
@@ -143,6 +143,6 @@ const SignIn = () => {
     )
 }
 
-export default React.memo(SignIn);
+export default React.memo(SignUp);
 
 

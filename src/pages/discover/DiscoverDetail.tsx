@@ -26,10 +26,8 @@ const DiscoverDetail = () => {
   const { data, isPending } = getMovieDetail(id || "");
   const detailMovieData: IMovieDetail = data;
 
-  // Similar
   const { data: similarMovieFullData, isLoading } = getAdditionalMovieDetail(id || "", "similar");
-  const similarMovieData: IMovie[] = similarMovieFullData?.results?.slice(0, 5);
-
+  const similarMovieData: IMovie[] = similarMovieFullData?.results?.slice(0, window.innerWidth < 640 ? 6 : window.innerWidth < 940 ? 6 : window.innerWidth < 1280 ? 8 : 10);
 
   // Zustand - Saved
   const { saved, toggleSaved } = useStore();
@@ -63,13 +61,13 @@ const DiscoverDetail = () => {
                     <p className='text-center text-sm md:text-base text-text-dark-500 light:text-text-light-600'>Poster is not found</p>
                   </div>
               }
-              <button onClick={(() => nav(-1))} className='absolute top-2.5 left-2.5 md:top-3 md:left-3 px-5 py-2 rounded-xl bg-bg-dark-900/40 cursor-pointer flex items-center justify-center'>
+              <button onClick={(() => nav(-1))} className='absolute top-2 left-2 md:top-3 md:left-3 px-5 py-2 rounded-xl bg-bg-dark-900/40 cursor-pointer flex items-center justify-center'>
                 <GrPrevious className='text-text-dark-100 text-lg md:text-xl lg:text-[22px]' />
               </button>
-              <button onClick={() => handleSaved(detailMovieData)} className='absolute top-2.5 right-2.5 md:top-3 md:right-3 size-8 md:size-9 lg:size-11 rounded-xl bg-bg-dark-900/40 cursor-pointer flex items-center justify-center'>
+              <button onClick={() => handleSaved(detailMovieData)} className='absolute top-2 right-2 md:top-3 md:right-3 size-8 md:size-9 lg:size-11 rounded-lg md:rounded-xl bg-bg-dark-900/40 cursor-pointer flex items-center justify-center'>
                 {
-                  saved.some(item => item.id === detailMovieData?.id) ? <RiBookmarkFill className='text-text-dark-100 text-lg md:text-xl lg:text-2xl' /> :
-                    <RiBookmarkLine className='text-text-dark-100 text-lg md:text-xl lg:text-2xl' />
+                  saved.some(item => item.id === detailMovieData?.id) ? <RiBookmarkFill className='text-text-dark-100 text-xl lg:text-2xl' /> :
+                    <RiBookmarkLine className='text-text-dark-100 text-xl lg:text-2xl' />
                 }
               </button>
               <div className='absolute right-1/2 bottom-3 md:bottom-6 translate-x-1/2 flex flex-col gap-1.5 sm:gap-3 md:gap-4 w-full'>
@@ -77,7 +75,7 @@ const DiscoverDetail = () => {
                   {detailMovieData.title}
                 </h1>
                 <div className='flex items-center justify-center'>
-                  <button className='w-[50%] min-[450px]:w-[300px] md:w-[380px] h-[38px] sm:h-[52px] flex items-center justify-center gap-[7px] bg-text-dark-100 rounded-xl text-primary'>
+                  <button className='w-[50%] min-[450px]:w-[300px] md:w-[380px] h-[38px] sm:h-[52px] shadow-2xl flex items-center justify-center gap-[7px] bg-text-dark-100 rounded-xl text-primary'>
                     <RiPlayFill className='text-xl md:text-2xl' />
                     <span className='text-base tracking-wide md:text-lg'>Watch</span>
                   </button>
@@ -110,7 +108,7 @@ const DiscoverDetail = () => {
                 <GrFormNext className='text-xl' />
               </Link>
             </div>
-            <MovieCard data={similarMovieData} isLoading={isLoading} cardQuantity={4} />
+            <MovieCard data={similarMovieData} isLoading={isLoading} cardQuantity={window.innerWidth < 640 ? 6 : window.innerWidth < 940 ? 6 : window.innerWidth < 1280 ? 8 : 10} />
           </div>
         </div>
       </section>

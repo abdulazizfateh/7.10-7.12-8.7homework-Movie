@@ -24,5 +24,10 @@ export const useMovies = () => {
         enabled: !!params.query,
     })
 
-    return { getMovies, getMovieDetail, getAdditionalMovieDetail, getMoviesBySearch }
+    const getTrendingMovies = () => useQuery({
+        queryKey: ["movie"],
+        queryFn: () => api.get("trending/movie/day?language=en-US").then(res => res.data)
+    })
+
+    return { getMovies, getMovieDetail, getAdditionalMovieDetail, getMoviesBySearch, getTrendingMovies }
 }

@@ -157,7 +157,7 @@ const Header = () => {
                     <img className="h-9 xl:h-10 rounded-full" src={userInfo.picture} alt={`${userInfo.email} picture`} />
                   </button>
                   :
-                  <Link to={"/signin"}>
+                  <Link to={"/signup"}>
                     <button className='block bg-primary rounded-xl h-11 px-10 xl:h-12 xl:px-12 tracking-wide'>
                       <span className="text-text-dark-100">Sign in</span>
                     </button>

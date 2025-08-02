@@ -74,7 +74,8 @@ export const Hero = () => {
                                         <div className='section_movie_detail_image_backup flex flex-col items-center justify-center pb-16 h-[270px] sm:h-[400px] md:h-[500px] lg:h-[640px] mx-auto bg-bg-dark-700 light:bg-bg-light-700 rounded-xl'>
                                             <p className='text-center text-sm md:text-base text-text-dark-500 light:text-text-light-600'>Poster is not found</p>
                                         </div>
-                                        : <img className='w-full h-full object-contain' src={IMAGE_URL + movie.backdrop_path} loading='lazy' alt={movie.title} />
+                                        :
+                                        <img className='w-full h-full object-contain' src={IMAGE_URL + movie.backdrop_path} loading='lazy' alt={movie.title} />
                                 }
                                 <div className='absolute right-1/2 bottom-3 md:bottom-6 translate-x-1/2 flex flex-col gap-1.5 sm:gap-3 md:gap-4 w-full'>
                                     <div className='flex items-center justify-center mx-auto w-[98%] sm:w-[80%] md:w-full'>
@@ -96,7 +97,7 @@ export const Hero = () => {
                                         <p className='text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]'>{movie.adult ? "18+" : "6+"}</p>
                                     </div>
                                     <div className='flex items-center justify-center'>
-                                        <button onClick={() => nav(`/discover/${movie.id}`)} className='w-[50%] min-[450px]:w-[300px] md:w-[380px] h-[38px] sm:h-[52px] flex items-center justify-center gap-[7px] bg-text-dark-100 rounded-xl text-primary'>
+                                        <button onClick={() => nav(`/discover/${movie.id}`)} className='w-[50%] min-[450px]:w-[300px] md:w-[380px] h-[38px] sm:h-[52px] shadow-2xl flex items-center justify-center gap-[7px] bg-text-dark-100 rounded-xl text-primary'>
                                             <RiPlayFill className='text-xl md:text-2xl' />
                                             <span className='tracking-wide text-base md:text-lg'>Watch</span>
                                         </button>
