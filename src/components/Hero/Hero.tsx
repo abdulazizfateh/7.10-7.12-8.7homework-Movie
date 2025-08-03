@@ -20,23 +20,22 @@ import { useNavigate } from 'react-router-dom';
 
 export const Hero = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+    const nav = useNavigate();
 
+    // Movies Data
     const { getMovies } = useMovies();
     const { data, isLoading } = getMovies({ page: 4, without_genres: "18,36,27,10749" });
+    const moviesData: IMovie[] = data?.results?.slice(0, 8) || [];
 
-    const madagaskar: IMovie = data?.results?.slice(7, 8)[0];
-    const moviesData: IMovie[] = data?.results?.slice(9, 19) || [];
 
-    if (madagaskar) moviesData.unshift(madagaskar);
-
+    // Genre List Data
     const { getGenre } = useGenre();
     const { data: genreResult } = getGenre;
-    const genresList: IGenre[] = genreResult?.genres || [];
+    const genresListData: IGenre[] = genreResult?.genres || [];
 
-    const getGenreNames = (ids: number[]) => {
-        return ids.map(id => genresList.find(genre => genre.id === id)?.name).filter(Boolean);
+    const getGenreNames = (id: number) => {
+        return genresListData?.find((item: IGenre) => item?.id === id);
     };
-    const nav = useNavigate();
 
     return (
         <section className='section_hero max-w-[1594px] mx-auto w-full flex flex-col gap-2 px-3 md:px-8'>
@@ -75,31 +74,37 @@ export const Hero = () => {
                                             <p className='text-center text-sm md:text-base text-text-dark-500 light:text-text-light-600'>Poster is not found</p>
                                         </div>
                                         :
-                                        <img className='w-full h-full object-contain' src={IMAGE_URL + movie.backdrop_path} loading='lazy' alt={movie.title} />
+                                        <div className='relative w-full h-full'>
+                                            <div className="absolute inset-0 bg-gradient-to-t to-transparent dark:from-black/90 dark:via-black/0" />
+                                            <img className='w-full h-full object-contain' src={IMAGE_URL + movie.backdrop_path} loading='lazy' alt={movie.title} />
+                                        </div>
                                 }
-                                <div className='absolute right-1/2 bottom-3 md:bottom-6 translate-x-1/2 flex flex-col gap-1.5 sm:gap-3 md:gap-4 w-full'>
+                                <div className='absolute right-1/2 bottom-3 md:bottom-6 translate-x-1/2 flex flex-col gap-1.5 sm:gap-3 lg:gap-4 w-full'>
                                     <div className='flex items-center justify-center mx-auto w-[98%] sm:w-[80%] md:w-full'>
-                                        <h1 onClick={() => nav(`/discover/${movie.id}`)} className='link_hover_hero text-xl sm:text-[22px] md:text-[28px] lg:text-[32px] mx-auto text-text-dark-100 tracking-wide text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)] cursor-pointer'>
+                                        <h1 onClick={() => nav(`/discover/${movie.id}`)} className='link_hover_hero text-xl sm:text-[22px] md:text-[26px] text-center lg:text-[28px] mx-auto text-text-dark-100 tracking-wide text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)] cursor-pointer'>
                                             {movie.title}
                                         </h1>
                                     </div>
-                                    <div className='hidden sm:flex items-center justify-center gap-2 text-sm tracking-wide text-text-dark-100'>
+                                    <div className='mb-1 md:mb-0 flex items-center justify-center gap-2 text-[13px] sm:text-sm tracking-wide text-text-dark-100'>
                                         <p className='text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]'>{movie.release_date.slice(0, 4)}</p>
                                         <span className='text-xs leading-4'>•</span>
                                         <p className="line-clamp-1 flex items-center gap-1 flex-wrap">
-                                            {getGenreNames(movie?.genre_ids?.slice(0, 1))?.map((genre, index) => (
-                                                <span key={index} className='text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]'>{genre}</span>
-                                            ))}
+
+                                            <span className='text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]'>
+                                                {
+                                                    getGenreNames(movie?.genre_ids[0])?.name
+                                                }
+                                            </span>
                                         </p>
                                         <span className='text-xs leading-4'>•</span>
                                         <p className='uppercase text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]'>{movie.original_language}</p>
                                         <span className='text-xs leading-4'>•</span>
                                         <p className='text-shadow-[2px_2px_4px_rgba(0,0,0,0.5)]'>{movie.adult ? "18+" : "6+"}</p>
                                     </div>
-                                    <div className='flex items-center justify-center'>
-                                        <button onClick={() => nav(`/discover/${movie.id}`)} className='w-[50%] min-[450px]:w-[300px] md:w-[380px] h-[38px] sm:h-[52px] shadow-2xl flex items-center justify-center gap-[7px] bg-text-dark-100 rounded-xl text-primary'>
+                                    <div className='items-center justify-center hidden md:flex'>
+                                        <button onClick={() => nav(`/discover/${movie.id}`)} className='sm:w-[270px] xl:w-[270px] sm:h-[44px] lg:h-[52px] shadow-2xl flex items-center justify-center gap-[7px] bg-text-dark-100 rounded-xl text-primary'>
                                             <RiPlayFill className='text-xl md:text-2xl' />
-                                            <span className='tracking-wide text-base md:text-lg'>Watch</span>
+                                            <span className='tracking-wide text-base md:text-lg hidden sm:block'>Watch</span>
                                         </button>
                                     </div>
                                 </div>

@@ -8,6 +8,8 @@ type Store = {
     toggleSaved: (payload: IMovie) => void
     auth: string | null,
     addAuth: (payload: string) => void
+    theme: boolean
+    setTheme: () => void
 }
 
 export const useStore = create<Store>()(
@@ -15,6 +17,8 @@ export const useStore = create<Store>()(
         (set, get) => ({
             saved: [],
             auth: null,
+            theme: false,
+
             toggleSaved: (payload) => {
                 const doesExist = get().saved.some(item => item.id === payload.id);
                 if (!doesExist) {
@@ -26,9 +30,17 @@ export const useStore = create<Store>()(
             addAuth: (payload) => {
                 set(() => ({ auth: payload }))
             },
+            setTheme: () => {
+                const currentTheme = get().theme
+                const newTheme = !currentTheme
+                set(() => ({ theme: newTheme }))
+
+                const root = document.documentElement
+                root.classList.toggle("light")
+            },
         }),
         {
-            name: "saved",
+            name: "app-storage",
             skipHydration: false
         }
     )

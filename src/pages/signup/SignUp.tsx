@@ -83,11 +83,11 @@ const SignUp = () => {
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)} className='w-full flex flex-col gap-2 lg:gap-3'>
                             <div className='flex flex-col gap-.5'>
-                                <input {...register("email")} className='w-full h-14 lg:h-[60px] rounded-xl px-4 bg-bg-dark-800 light:bg-bg-light-700 text-text-dark-100 light:text-text-light-100 text-base tracking-wide outline-none' type='text' placeholder='Email Address' autoComplete='off' />
+                                <input {...register("email")} className='w-full h-14 lg:h-14 rounded-xl px-4 bg-bg-dark-800 light:bg-bg-light-700 text-text-dark-100 light:text-text-light-100 text-base tracking-wide outline-none' type='text' placeholder='Email Address' autoComplete='off' />
                                 <p className='text-sm text-primary'>{errors.email?.message}</p>
                             </div>
                             <div className='flex flex-col gap-.5 mt-.5'>
-                                <input {...register("password")} className='w-full h-14 lg:h-[60px] rounded-xl px-4 bg-bg-dark-800 light:bg-bg-light-700 text-text-dark-100 light:text-text-light-100 text-base tracking-wide outline-none' type='password' placeholder='Password' autoComplete='off' />
+                                <input {...register("password")} className='w-full h-14 lg:h-14 rounded-xl px-4 bg-bg-dark-800 light:bg-bg-light-700 text-text-dark-100 light:text-text-light-100 text-base tracking-wide outline-none' type='password' placeholder='Password' autoComplete='off' />
                                 <p className='text-sm text-primary'>{errors.password?.message}</p>
                             </div>
                             <button

@@ -11,27 +11,17 @@ import { GoHomeFill } from "react-icons/go";
 import { IoCompass } from "react-icons/io5";
 import { RxBookmarkFilled } from "react-icons/rx";
 import { RiSearchFill } from "react-icons/ri";
-// import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { GoSun } from "react-icons/go";
 import { PiMoonLight } from "react-icons/pi";
 import type { IUser } from "@/types/types";
+import { useStore } from "@/zustand/useStore";
 
 const Header = () => {
+  const { theme, setTheme } = useStore();
+  
   // Theme
-  const root = document.documentElement.classList;
-  const [theme, setTheme] = useState<boolean>(JSON.parse(localStorage.getItem("theme") || "false"));
-
-  useEffect(() => {
-    if (theme) {
-      root.add("light")
-    } else {
-      root.remove("light");
-    }
-    localStorage.setItem("theme", JSON.stringify(theme));
-  }, [theme])
-
   const handleTheme = () => {
-    setTheme(prev => !prev);
+    setTheme()
   }
 
   const handleMenuClose = () => {
@@ -159,7 +149,7 @@ const Header = () => {
                   :
                   <Link to={"/signup"}>
                     <button className='block bg-primary rounded-xl h-11 px-10 xl:h-12 xl:px-12 tracking-wide'>
-                      <span className="text-text-dark-100">Sign in</span>
+                      <span className="text-text-dark-100">Sign up</span>
                     </button>
                   </Link>
               }

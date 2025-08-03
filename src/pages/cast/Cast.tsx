@@ -25,7 +25,7 @@ const Cast = () => {
                 <div className="container">
                     <div className='cast_detail_wrapper min-h-screen grid grid-cols-1 xl:grid-cols-[2fr_8fr] gap-4 sm:gap-5 lg:gap-7 xl:gap-8 mt-4 sm:mt-6 md:mt-7 lg:mt-8'>
                         <div className='cast_detail_info xl:self-start xl:sticky xl:top-[20px]'>
-                            <div className='max-w-[98%] mx-auto min-[440px]:max-w-[400px] xl:overflow-y-auto xl:pb-7 xl:h-screen xl:pr-1 xl:max-h-[calc(100vh] rounded-xl mb-12 xl:mb-0'>
+                            <div className='max-w-[95%] mx-auto min-[440px]:w-full min-[440px]:max-w-[400px] xl:overflow-y-auto xl:pb-7 xl:h-screen xl:pr-1 xl:max-h-[calc(100vh] rounded-xl mb-12 xl:mb-0'>
                                 <div className='mb-4 md:mb-6'>
                                     {
                                         isLoadingCast && <div className='bg-bg-dark-700 light:bg-bg-light-700 w-[80%] min-[360px]:w-[60%] min-[440px]:w-auto mx-auto xl:w-full object-cover h-80 lg:h-[350px] rounded-xl'></div>
@@ -40,7 +40,7 @@ const Cast = () => {
                                     }
                                 </div>
                                 <h3 className='text-text-dark-100 light:text-text-light-100 text-lg tracking-wide md:text-xl lg:leading-6 mb-4 md:mb-6'>Personal info</h3>
-                                <div className='flex flex-col gap-2 sm:gap-4 text-text-dark-500 text-sm tracking-wide md:text-base leading-5 pb-7 md:pb-8 border-b border-[#2D2D2D] light:border-bg-light-800'>
+                                <div className='flex flex-col gap-2 sm:gap-3 text-text-dark-500 text-sm tracking-wide md:text-base leading-5 pb-7 md:pb-8 border-b border-[#2D2D2D] light:border-bg-light-800'>
                                     <div className='flex items-start justify-between'>
                                         <p className='text-left'>Full name:</p>
                                         <p className='text-right text-text-dark-100 light:text-text-light-100'>{castData?.name}</p>
